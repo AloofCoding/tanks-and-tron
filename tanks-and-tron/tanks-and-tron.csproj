@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>tanks_and_tron</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Sudoku.png" />
+    <None Remove="tanks.jpg" />
+    <None Remove="tron.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Sudoku.png" />
+    <Resource Include="tanks.jpg" />
+    <Resource Include="tron.jpg" />
+  </ItemGroup>
+
+</Project>
