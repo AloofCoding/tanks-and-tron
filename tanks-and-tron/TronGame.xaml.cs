@@ -10,32 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace tanks_and_tron
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaktionslogik für TronGame.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TronGame : Window
     {
-        public MainWindow()
+        public TronGame()
         {
             InitializeComponent();
-        }
-
-        private void btn_sudoku_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btn_tron_Click(object sender, RoutedEventArgs e)
-        {
-            TronGame tronGame = new TronGame();
-            tronGame.Show();
-            this.Close();
-
         }
     }
 }
