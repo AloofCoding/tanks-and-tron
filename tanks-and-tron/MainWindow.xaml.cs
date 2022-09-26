@@ -29,16 +29,16 @@ namespace tanks_and_tron
         {
 
         }
-
         private void btn_tron_Click(object sender, RoutedEventArgs e)
         {
+            /*
             TronGame tronGame = new TronGame();
             tronGame.Show();
             this.Close();
-
+            */
         }
 
-        private void btn_tanks_Click(object sender, RoutedEventArgs e)
+        private void btn_tanks_Click_1(object sender, RoutedEventArgs e)
         {
             TanksGame tanksGame = new TanksGame();
             tanksGame.Show();
