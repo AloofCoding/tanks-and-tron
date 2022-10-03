@@ -29,8 +29,8 @@ namespace tanks_and_tron
             btn_create.IsEnabled = false;
             txt_output.Text = "";
             CreateSudoku();
-            MessageBox.Show("finished creation");
-            btn_create.IsEnabled = true;
+            //MessageBox.Show("finished creation");
+            
         }
 
         private void CreateSudoku() 
@@ -39,6 +39,7 @@ namespace tanks_and_tron
             int[,] grid = new int[9, 9];
             Random rnd = new Random();
             bool reshuffle = false;
+            bool reshuffleBlock = false;
 
             for (int iy = 0; iy < 9; iy++)
             {
@@ -72,8 +73,28 @@ namespace tanks_and_tron
                 }
                 #endregion
 
+                #region check of blocks
+                // is unable to write sth in textbox aka doesn't reach conclusion
+                if((iy+1) / 3 == 1)
+                {
+                    HashSet<int> set = new HashSet<int>();
+                    for (int i1 = 0; i1 < 2; i1++)
+                    {
+                        for (int i2 = 0; i2 < 2; i2++)
+                        {
+                            set.Add(grid[i1, i2]);
+                        }
+                    }
+                    if (set.Count < 9)
+                    {
+                        reshuffleBlock = true;
+                    }
+                }
+
+                #endregion
+
                 #region Consequences of Checking
-                if (!reshuffle)
+                if (!reshuffle && !reshuffleBlock)
                 {
                     for (int i = iy; i <= iy; i++)
                     {
@@ -85,12 +106,18 @@ namespace tanks_and_tron
                     iy -= 1;
                     reshuffle = false;
                 }
+                if (reshuffleBlock)
+                {
+                    iy -= 2;
+                    reshuffleBlock = false;
+                }
                 #endregion
 
                 // ToDo: implement checking of 3x3 boxes and combine it with check of columns
 
                 secondrow = true;
             }
+            btn_create.IsEnabled = true;
         }
     }
 }
