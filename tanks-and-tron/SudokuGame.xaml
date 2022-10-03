@@ -6,9 +6,32 @@
         xmlns:local="clr-namespace:tanks_and_tron"
         mc:Ignorable="d"
         Title="SudokuGame" Height="450" Width="800" MinWidth="800" MinHeight="450">
-    <Grid>
+    <Grid x:Name="grid1">
         <Button x:Name="btn_create" Content="Create Sudoku" HorizontalAlignment="Left" Margin="34,26,0,0" VerticalAlignment="Top" Height="37" Width="108" Click="btn_create_Click"/>
         <TextBox x:Name="txt_output" HorizontalAlignment="Left" Margin="67,115,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="368" Height="255"/>
-
+        <!--<Border BorderThickness="3" BorderBrush="Black">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="0" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                <TextBox Grid.Row="0" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                <TextBox Grid.Row="0" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                <TextBox Grid.Row="1" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                <TextBox Grid.Row="1" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                <TextBox Grid.Row="1" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                <TextBox Grid.Row="2" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                <TextBox Grid.Row="2" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                <TextBox Grid.Row="2" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+            </Grid>
+        </Border>-->
     </Grid>
+    
 </Window>
