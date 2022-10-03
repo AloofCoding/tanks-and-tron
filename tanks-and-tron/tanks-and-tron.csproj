@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="bullet.png" />
     <None Remove="cannon.png" />
     <None Remove="Sudoku.png" />
     <None Remove="tank.png" />
@@ -17,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="bullet.png" />
     <Resource Include="cannon.png" />
     <Resource Include="Sudoku.png" />
     <Resource Include="tank.png" />

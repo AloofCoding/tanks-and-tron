@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace tanks_and_tron
 {
@@ -206,6 +207,41 @@ namespace tanks_and_tron
             //MessageBox.Show(angle.ToString());
 
             cannon.RenderTransform = new RotateTransform(angle);
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Point point = e.GetPosition(MainGrid);
+            var cannon_X = cannon.Margin.Left + cannon.Width / 2;
+            var cannon_Y = cannon.Margin.Top + cannon.Height / 2;
+            double side_a;
+            double side_b;
+
+            side_b = cannon_X - point.X;
+            side_a = cannon_Y - point.Y;
+
+            float angle = (float)Math.Atan2(side_b, side_a) * (float)(180 / Math.PI) * (-1);
+
+            #region doesn't work yet - do sth with a timer!
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(@"C:\Users\andreas.steiner\Source\Repos\AloofCoding\tanks-and-tron\tanks-and-tron\bullet.png");
+            image.EndInit();
+
+            Image bullet = new Image();
+            bullet.BeginInit();
+            bullet.Source = image;
+            bullet.EndInit(); 
+            
+            bullet.RenderTransform = new RotateTransform(angle);
+            Thickness mb = bullet.Margin;
+            mb.Left = tank.Margin.Left;
+            mb.Top = tank.Margin.Top;
+            bullet.Margin = mb;
+            mb = bullet.Margin;
+            mb.Left += 10;
+            bullet.Margin = mb;
+            #endregion
         }
     }
 }
