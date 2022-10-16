@@ -20,10 +20,22 @@ namespace tanks_and_tron
     /// </summary>
     public partial class TanksGame : Window
     {
+        DispatcherTimer dTimer;
+
         public TanksGame()
         {
             InitializeComponent();
             MainGrid.Focus();
+
+            dTimer = new DispatcherTimer();
+            dTimer.Interval = TimeSpan.FromMilliseconds(100);
+            dTimer.Tick += DTimer_Tick;
+        }
+
+        private void DTimer_Tick(object? sender, EventArgs e)
+        {
+            TimeSpan.FromMilliseconds(-100);
+            //move bullet
         }
 
         private void MainGrid_KeyDown(object sender, KeyEventArgs e)
@@ -211,6 +223,12 @@ namespace tanks_and_tron
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = new Image();
+            img.BeginInit();
+            //further investigation required
+            //img.Source = bullet.png;
+            img.EndInit();
+
             Point point = e.GetPosition(MainGrid);
             var cannon_X = cannon.Margin.Left + cannon.Width / 2;
             var cannon_Y = cannon.Margin.Top + cannon.Height / 2;
@@ -221,27 +239,15 @@ namespace tanks_and_tron
             side_a = cannon_Y - point.Y;
 
             float angle = (float)Math.Atan2(side_b, side_a) * (float)(180 / Math.PI) * (-1);
+            cannon.RenderTransform = new RotateTransform(angle);
 
-            #region doesn't work yet - do sth with a timer!
-            BitmapImage image = new BitmapImage();
-            image.BeginInit();
-            image.UriSource = new Uri(@"C:\Users\andreas.steiner\Source\Repos\AloofCoding\tanks-and-tron\tanks-and-tron\bullet.png");
-            image.EndInit();
-
-            Image bullet = new Image();
-            bullet.BeginInit();
-            bullet.Source = image;
-            bullet.EndInit(); 
-            
-            bullet.RenderTransform = new RotateTransform(angle);
-            Thickness mb = bullet.Margin;
-            mb.Left = tank.Margin.Left;
-            mb.Top = tank.Margin.Top;
-            bullet.Margin = mb;
-            mb = bullet.Margin;
-            mb.Left += 10;
-            bullet.Margin = mb;
-            #endregion
+            dTimer.Start();
+            //create image
+            //get angle from cannon
+            //move image straight forward along the angle
+            //destroy image when out of sight
+            //prevent spawning bullets on click spam
+            dTimer.Stop();
         }
     }
 }
