@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Drawing;
 
 namespace tanks_and_tron
 {
@@ -81,6 +82,7 @@ namespace tanks_and_tron
 
             if (e.Key == Key.W && Keyboard.IsKeyDown(Key.D) || e.Key == Key.D && Keyboard.IsKeyDown(Key.W))
             {
+                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Top -= 10;
                 mt.Left += 10;
@@ -90,9 +92,17 @@ namespace tanks_and_tron
                 mc.Left += 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
+                #endregion
+
+                #region get/set values version --> ?!?
+                tank.RenderTransform = new TranslateTransform(TopProperty = 10);
+                tank.SetValue(LeftProperty, 10.0);
+                tank.RenderTransform = new RotateTransform(45);
+                #endregion
             }
             else if(e.Key == Key.S && Keyboard.IsKeyDown(Key.D) || e.Key == Key.D && Keyboard.IsKeyDown(Key.S))
             {
+                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Top += 10;
                 mt.Left += 10;
@@ -102,9 +112,13 @@ namespace tanks_and_tron
                 mc.Left += 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
+                #endregion
+
+
             }
             else if (e.Key == Key.S && Keyboard.IsKeyDown(Key.A) || e.Key == Key.A && Keyboard.IsKeyDown(Key.S))
             {
+                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Top += 10;
                 mt.Left -= 10;
@@ -114,9 +128,11 @@ namespace tanks_and_tron
                 mc.Left -= 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
+                #endregion
             }
             else if (e.Key == Key.W && Keyboard.IsKeyDown(Key.A) || e.Key == Key.A && Keyboard.IsKeyDown(Key.W))
             {
+                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Top -= 10;
                 mt.Left -= 10;
@@ -126,9 +142,11 @@ namespace tanks_and_tron
                 mc.Left -= 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
+                #endregion
             }
             else if (e.Key == Key.S)
             {
+                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Top += 10;
                 tank.RenderTransform = new RotateTransform(0);
@@ -136,9 +154,11 @@ namespace tanks_and_tron
                 mc.Top += 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
+                #endregion
             }
             else if (e.Key == Key.W)
             {
+                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Top -= 10;
                 tank.RenderTransform = new RotateTransform(0);
@@ -146,9 +166,11 @@ namespace tanks_and_tron
                 mc.Top -= 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
+                #endregion
             }
             else if (e.Key == Key.A)
             {
+                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Left -= 10;
                 tank.RenderTransform = new RotateTransform(90);
@@ -156,9 +178,11 @@ namespace tanks_and_tron
                 mc.Left -= 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
+                #endregion
             }
             else if (e.Key == Key.D)
             {
+                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Left += 10;
                 tank.RenderTransform = new RotateTransform(90);
@@ -166,6 +190,7 @@ namespace tanks_and_tron
                 mc.Left += 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
+                #endregion
             }
             else
             {
@@ -175,7 +200,7 @@ namespace tanks_and_tron
 
         private void Window_MouseMove_1(object sender, MouseEventArgs e)
         {
-            Point point = e.GetPosition(MainGrid);
+            System.Windows.Point point = e.GetPosition(MainGrid);
             var cannon_X = cannon.Margin.Left + cannon.Width/2;
             var cannon_Y = cannon.Margin.Top + cannon.Height/2;
             double side_a;
@@ -223,13 +248,41 @@ namespace tanks_and_tron
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Image img = new Image();
-            img.BeginInit();
-            //further investigation required
-            //img.Source = bullet.png;
-            img.EndInit();
+            #region bullet using image - current status: off
+            //Image bullet = new Image();
+            //bullet.BeginInit();
+            //BitmapImage bitmap = new BitmapImage(new Uri("pack://application:,,,/bullet.png"));
+            //bullet.Source = bitmap;
+            //bullet.Margin = tank.Margin;
+            //Panel.SetZIndex(bullet, -1);
+            //bullet.Visibility = Visibility.Visible;
+            //bullet.Height = tank.Height;
+            //bullet.Width = tank.Width;
+            //MainGrid.Children.Add(bullet);
+            ////MessageBox.Show("bullet created");
+            //bullet.EndInit();
+            #endregion
 
-            Point point = e.GetPosition(MainGrid);
+            #region bullet using ellipse - current status: on
+            Ellipse ellipse;
+            ellipse = new Ellipse();
+            ellipse.Height = tank.Height;
+            ellipse.Width = tank.Height;
+            ellipse.Stroke = Brushes.Red;
+            ellipse.Fill = Brushes.Red;
+            ellipse.StrokeThickness = 5;
+            //ellipse.Margin = tank.Margin;
+            Panel.SetZIndex(ellipse, -2);
+            ellipse.SetValue(LeftProperty,tank.GetValue(LeftProperty));
+            MessageBox.Show(tank.GetValue(LeftProperty).ToString());
+            ellipse.SetValue(TopProperty, tank.GetValue(TopProperty));
+            MessageBox.Show(tank.GetValue(TopProperty).ToString());
+            MainGrid.Children.Add(ellipse);
+            //MessageBox.Show(tank.GetValue(LeftProperty).ToString());
+            #endregion
+
+
+            System.Windows.Point point = e.GetPosition(MainGrid);
             var cannon_X = cannon.Margin.Left + cannon.Width / 2;
             var cannon_Y = cannon.Margin.Top + cannon.Height / 2;
             double side_a;
@@ -242,7 +295,6 @@ namespace tanks_and_tron
             cannon.RenderTransform = new RotateTransform(angle);
 
             dTimer.Start();
-            //create image
             //get angle from cannon
             //move image straight forward along the angle
             //destroy image when out of sight
