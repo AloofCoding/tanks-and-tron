@@ -8,7 +8,7 @@
         Title="SudokuGame" Height="450" Width="800" MinWidth="800" MinHeight="450">
     <Grid x:Name="grid1">
         <Button x:Name="btn_create" Content="Create Sudoku" HorizontalAlignment="Left" Margin="34,26,0,0" VerticalAlignment="Top" Height="37" Width="108" Click="btn_create_Click"/>
-        <TextBox x:Name="txt_output" HorizontalAlignment="Left" Margin="196,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="239" Height="75"/>
+        <TextBox x:Name="txt_output" HorizontalAlignment="Left" Margin="196,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="148" Height="35"/>
 
         <Grid x:Name="grid_sudoku" Width="300" Height="297">
             <Grid.ColumnDefinitions>
@@ -88,7 +88,7 @@
                     <TextBox x:Name="txt_320" Grid.Row="2" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
                     <TextBox x:Name="txt_321" Grid.Row="2" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
                     <TextBox x:Name="txt_322" Grid.Row="2" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    
+
                 </Grid>
             </Border>
             <Border BorderThickness="2" BorderBrush="Black" Grid.Row="1" Grid.Column="0">
@@ -103,15 +103,15 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBox Grid.Row="0" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="0" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="0" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_400" Grid.Row="0" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_401" Grid.Row="0" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_402" Grid.Row="0" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_410" Grid.Row="1" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_411" Grid.Row="1" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_412" Grid.Row="1" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_420" Grid.Row="2" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_421" Grid.Row="2" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_422" Grid.Row="2" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
                 </Grid>
             </Border>
             <Border BorderThickness="2" BorderBrush="Black" Grid.Row="1" Grid.Column="1">
@@ -126,15 +126,15 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBox Grid.Row="0" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="0" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="0" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_500" Grid.Row="0" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_501" Grid.Row="0" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_502" Grid.Row="0" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_510" Grid.Row="1" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_511" Grid.Row="1" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_512" Grid.Row="1" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_520" Grid.Row="2" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_521" Grid.Row="2" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_522" Grid.Row="2" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
                 </Grid>
             </Border>
             <Border BorderThickness="2" BorderBrush="Black" Grid.Row="1" Grid.Column="2">
@@ -149,15 +149,15 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBox Grid.Row="0" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="0" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="0" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_600" Grid.Row="0" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_601" Grid.Row="0" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_602" Grid.Row="0" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_610" Grid.Row="1" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_611" Grid.Row="1" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_612" Grid.Row="1" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_620" Grid.Row="2" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_621" Grid.Row="2" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_622" Grid.Row="2" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
                 </Grid>
             </Border>
             <Border BorderThickness="2" BorderBrush="Black" Grid.Row="2" Grid.Column="0">
@@ -172,15 +172,15 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBox Grid.Row="0" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="0" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="0" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_700" Grid.Row="0" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_701" Grid.Row="0" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_702" Grid.Row="0" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_710" Grid.Row="1" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_711" Grid.Row="1" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_712" Grid.Row="1" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_720" Grid.Row="2" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_721" Grid.Row="2" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_722" Grid.Row="2" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
                 </Grid>
             </Border>
             <Border BorderThickness="2" BorderBrush="Black" Grid.Row="2" Grid.Column="1">
@@ -195,15 +195,15 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBox Grid.Row="0" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="0" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="0" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_800" Grid.Row="0" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_801" Grid.Row="0" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_802" Grid.Row="0" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_810" Grid.Row="1" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_811" Grid.Row="1" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_812" Grid.Row="1" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_820" Grid.Row="2" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_821" Grid.Row="2" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_822" Grid.Row="2" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
                 </Grid>
             </Border>
             <Border BorderThickness="2" BorderBrush="Black" Grid.Row="2" Grid.Column="2">
@@ -218,15 +218,15 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBox Grid.Row="0" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="0" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="0" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_900" Grid.Row="0" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_901" Grid.Row="0" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_902" Grid.Row="0" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_910" Grid.Row="1" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_911" Grid.Row="1" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_912" Grid.Row="1" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_920" Grid.Row="2" Grid.Column="0" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_921" Grid.Row="2" Grid.Column="1" BorderBrush="Blue" BorderThickness="1"></TextBox>
+                    <TextBox x:Name="txt_922" Grid.Row="2" Grid.Column="2" BorderBrush="Blue" BorderThickness="1"></TextBox>
                 </Grid>
             </Border>
             <Grid/>
