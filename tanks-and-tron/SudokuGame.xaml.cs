@@ -380,7 +380,50 @@ namespace tanks_and_tron
             numbersforblock6.Remove(block4[0, 1]);
             numbersforblock6.Remove(block4[0, 2]);
 
-            numbersforblock6.OrderBy(c => rnd.Next()).ToArray();
+
+            //ToDo: this code messes up the whole thing again because it focuses on 0,0 | 0,1 | 0,2 without checking if all of them are OK
+            while (!ok)
+            {
+                numbersforblock6.OrderBy(c => rnd.Next()).ToArray();
+                HashSet<int> set = new HashSet<int>();
+                set.Add(block3[0, 0]);
+                set.Add(block3[1, 0]);
+                set.Add(block3[2, 0]);
+                set.Add(block6[0, 0]);
+                if(set.Count >= 4)
+                {
+                    ok = true;
+                }
+            }
+            ok = false;
+            while (!ok)
+            {
+                numbersforblock6.OrderBy(c => rnd.Next()).ToArray();
+                HashSet<int> set = new HashSet<int>();
+                set.Add(block3[0, 1]);
+                set.Add(block3[1, 1]);
+                set.Add(block3[2, 1]);
+                set.Add(block6[0, 1]);
+                if (set.Count >= 4)
+                {
+                    ok = true;
+                }
+            }
+            ok = false;
+            while (!ok)
+            {
+                numbersforblock6.OrderBy(c => rnd.Next()).ToArray();
+                HashSet<int> set = new HashSet<int>();
+                set.Add(block3[0, 1]);
+                set.Add(block3[1, 1]);
+                set.Add(block3[2, 1]);
+                set.Add(block6[0, 1]);
+                if (set.Count >= 4)
+                {
+                    ok = true;
+                }
+            }
+            ok = false;
 
             block6[0, 0] = numbersforblock6.ElementAt<int>(0);
             block6[0, 1] = numbersforblock6.ElementAt<int>(1);
@@ -406,9 +449,9 @@ namespace tanks_and_tron
             block6[1, 1] = numbersforblock6col2.ElementAt<int>(1);
             block6[1, 2] = numbersforblock6col2.ElementAt<int>(2);
 
-            txt_601.Text = block6[1, 0].ToString();
+            txt_610.Text = block6[1, 0].ToString();
             txt_611.Text = block6[1, 1].ToString();
-            txt_621.Text = block6[1, 2].ToString();
+            txt_612.Text = block6[1, 2].ToString();
 
             List<int> numbersforblock6row3 = new List<int>();
             numbersforblock6row3.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
@@ -426,8 +469,8 @@ namespace tanks_and_tron
             block6[2, 1] = numbersforblock6row3.ElementAt<int>(1);
             block6[2, 2] = numbersforblock6row3.ElementAt<int>(2);
 
-            txt_602.Text = block6[2, 0].ToString();
-            txt_612.Text = block6[2, 1].ToString();
+            txt_620.Text = block6[2, 0].ToString();
+            txt_621.Text = block6[2, 1].ToString();
             txt_622.Text = block6[2, 2].ToString();
 
             //ToDo: implement check of block 6
