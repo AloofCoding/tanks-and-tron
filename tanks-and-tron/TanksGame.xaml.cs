@@ -39,50 +39,72 @@ namespace tanks_and_tron
             //move bullet
         }
 
+        double x = 0.0;
+        double y = 0.0;
+
         private void MainGrid_KeyDown(object sender, KeyEventArgs e)
         {
-            #region 2 keys
-            //MessageBox.Show("Event registriert!");
-            /*
-            if (e.Key == Key.W && Keyboard.IsKeyDown(Key.D))
-            {
-                Thickness mt = tank.Margin;
-                mt.Left += 10;
-                mt.Top -= 10;
-                tank.Margin = mt;
-                tank.RenderTransform = new RotateTransform(45);
-            }
-            else if (e.Key == Key.D && Keyboard.IsKeyDown(Key.S))
-            {
-                Thickness mt = tank.Margin;
-                mt.Left += 10;
-                mt.Top += 10;
-                tank.Margin = mt;
-                tank.RenderTransform = new RotateTransform(135);
-            }
-            else if (e.Key == Key.S && Keyboard.IsKeyDown(Key.A))
-            {
-                Thickness mt = tank.Margin;
-                mt.Left -= 10;
-                mt.Top += 10;
-                tank.Margin = mt;
-                tank.RenderTransform = new RotateTransform(225);
-            }
-            else if (e.Key == Key.A && Keyboard.IsKeyDown(Key.W))
-            {
-                Thickness mt = tank.Margin;
-                mt.Left -= 10;
-                mt.Top -= 10;
-                tank.Margin = mt;
-                tank.RenderTransform = new RotateTransform(315); 
-            }
-            */
-            /*else*/
-            #endregion
-
+            #region not margin version
             if (e.Key == Key.W && Keyboard.IsKeyDown(Key.D) || e.Key == Key.D && Keyboard.IsKeyDown(Key.W))
             {
-                #region margin version
+                tank.RenderTransform = new RotateTransform(45.0);
+                tank.RenderTransform = new TranslateTransform(x += 10.0, y -= 10.0);
+                cannon.RenderTransform = tank.RenderTransform;                
+            }
+            else if (e.Key == Key.S && Keyboard.IsKeyDown(Key.D) || e.Key == Key.D && Keyboard.IsKeyDown(Key.S))
+            {
+                tank.RenderTransform = new RotateTransform(135.0);
+                tank.RenderTransform = new TranslateTransform(x += 10.0, y += 10.0);
+                cannon.RenderTransform = tank.RenderTransform;
+            }
+            else if (e.Key == Key.S && Keyboard.IsKeyDown(Key.A) || e.Key == Key.A && Keyboard.IsKeyDown(Key.S))
+            {
+                tank.RenderTransform = new RotateTransform(225.0);
+                tank.RenderTransform = new TranslateTransform(x -= 10.0, y += 10.0);
+                cannon.RenderTransform = tank.RenderTransform;
+            }
+            else if (e.Key == Key.W && Keyboard.IsKeyDown(Key.A) || e.Key == Key.A && Keyboard.IsKeyDown(Key.W))
+            {
+                tank.RenderTransform = new RotateTransform(315.0);
+                tank.RenderTransform = new TranslateTransform(x -= 10.0, y -= 10.0);
+                cannon.RenderTransform = tank.RenderTransform;
+            }
+            else if (e.Key == Key.S)
+            {
+                tank.RenderTransform = new RotateTransform(180.0);
+                tank.RenderTransform = new TranslateTransform(x += 0.0, y += 10.0);
+                cannon.RenderTransform = tank.RenderTransform;
+            }
+            else if (e.Key == Key.W)
+            {
+                tank.RenderTransform = new RotateTransform(0.0);
+                tank.RenderTransform = new TranslateTransform(x += 0.0, y -= 10.0);
+                cannon.RenderTransform = tank.RenderTransform;
+            }
+            else if (e.Key == Key.A)
+            {
+                tank.RenderTransform = new RotateTransform(270.0);
+                tank.RenderTransform = new TranslateTransform(x -= 10.0, y += 0.0);
+                cannon.RenderTransform = tank.RenderTransform;
+            }
+            else if (e.Key == Key.D)
+            {
+                tank.RenderTransform = new RotateTransform(90.0);
+                tank.RenderTransform = new TranslateTransform(x += 10.0, y -= 0.0);
+                cannon.RenderTransform = tank.RenderTransform;
+            }
+            else
+            {
+
+            }
+            tank.UpdateLayout();
+            cannon.UpdateLayout();
+            #endregion
+
+            #region margin version
+            /*
+            if (e.Key == Key.W && Keyboard.IsKeyDown(Key.D) || e.Key == Key.D && Keyboard.IsKeyDown(Key.W))
+            {
                 Thickness mt = tank.Margin;
                 mt.Top -= 10;
                 mt.Left += 10;
@@ -91,18 +113,10 @@ namespace tanks_and_tron
                 mc.Top -= 10;
                 mc.Left += 10;
                 tank.Margin = mt;
-                cannon.Margin = mc;
-                #endregion
-
-                #region get/set values version --> ?!?
-                tank.RenderTransform = new TranslateTransform(TopProperty = 10);
-                tank.SetValue(LeftProperty, 10.0);
-                tank.RenderTransform = new RotateTransform(45);
-                #endregion
+                cannon.Margin = mc;             
             }
             else if(e.Key == Key.S && Keyboard.IsKeyDown(Key.D) || e.Key == Key.D && Keyboard.IsKeyDown(Key.S))
             {
-                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Top += 10;
                 mt.Left += 10;
@@ -112,13 +126,9 @@ namespace tanks_and_tron
                 mc.Left += 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
-                #endregion
-
-
             }
             else if (e.Key == Key.S && Keyboard.IsKeyDown(Key.A) || e.Key == Key.A && Keyboard.IsKeyDown(Key.S))
             {
-                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Top += 10;
                 mt.Left -= 10;
@@ -128,11 +138,9 @@ namespace tanks_and_tron
                 mc.Left -= 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
-                #endregion
             }
             else if (e.Key == Key.W && Keyboard.IsKeyDown(Key.A) || e.Key == Key.A && Keyboard.IsKeyDown(Key.W))
             {
-                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Top -= 10;
                 mt.Left -= 10;
@@ -142,11 +150,9 @@ namespace tanks_and_tron
                 mc.Left -= 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
-                #endregion
             }
             else if (e.Key == Key.S)
             {
-                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Top += 10;
                 tank.RenderTransform = new RotateTransform(0);
@@ -154,11 +160,9 @@ namespace tanks_and_tron
                 mc.Top += 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
-                #endregion
             }
             else if (e.Key == Key.W)
             {
-                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Top -= 10;
                 tank.RenderTransform = new RotateTransform(0);
@@ -166,11 +170,9 @@ namespace tanks_and_tron
                 mc.Top -= 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
-                #endregion
             }
             else if (e.Key == Key.A)
             {
-                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Left -= 10;
                 tank.RenderTransform = new RotateTransform(90);
@@ -178,11 +180,9 @@ namespace tanks_and_tron
                 mc.Left -= 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
-                #endregion
             }
             else if (e.Key == Key.D)
             {
-                #region margin version
                 Thickness mt = tank.Margin;
                 mt.Left += 10;
                 tank.RenderTransform = new RotateTransform(90);
@@ -190,52 +190,31 @@ namespace tanks_and_tron
                 mc.Left += 10;
                 tank.Margin = mt;
                 cannon.Margin = mc;
-                #endregion
             }
             else
             {
 
             }
+            */
+            #endregion
         }
 
         private void Window_MouseMove_1(object sender, MouseEventArgs e)
         {
+            #region not margin version
+            //here would be my code for a non margin cannon rotation
+            //...
+            //if i'd have one
+            #endregion
+
+            #region margin version
+            
             System.Windows.Point point = e.GetPosition(MainGrid);
             var cannon_X = cannon.Margin.Left + cannon.Width/2;
             var cannon_Y = cannon.Margin.Top + cannon.Height/2;
-            double side_a;
-            double side_b;
 
-            #region complicated dumb way for the 2 lines of code below
-            //if (point.X < cannon_X && point.Y < cannon_Y) // top right
-            //{
-            //    side_b = cannon_X - point.X;
-            //    side_a = cannon_Y - point.Y;
-            //}
-            //else if (point.X < cannon_X && point.Y > cannon_Y) // bottom right
-            //{
-            //    side_b = cannon_X - point.X;
-            //    side_a = cannon_Y - point.Y;
-            //}
-            //else if (point.X > cannon_X && point.Y < cannon_Y) // top left
-            //{
-            //    side_b = cannon_X - point.X;
-            //    side_a = cannon_Y - point.Y;
-            //}
-            //else if (point.X > cannon_X && point.Y > cannon_Y) // bottom left
-            //{
-            //    side_b = cannon_X - point.X;
-            //    side_a = cannon_Y - point.Y;
-            //}
-            //else // shouldn't happen !!!
-            //{
-            //    side_a = 0;
-            //    side_b = 0;
-            //}
-            #endregion
-
-            side_b = cannon_X - point.X;
-            side_a = cannon_Y - point.Y;
+            double side_b = cannon_X - point.X;
+            double side_a = cannon_Y - point.Y;
 
             //var side_c = Math.Sqrt(Math.Pow(side_a, 2) + Math.Pow(side_b, 2));
 
@@ -244,6 +223,8 @@ namespace tanks_and_tron
             //MessageBox.Show(angle.ToString());
 
             cannon.RenderTransform = new RotateTransform(angle);
+            
+            #endregion
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
