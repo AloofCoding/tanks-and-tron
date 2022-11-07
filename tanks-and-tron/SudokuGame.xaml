@@ -8,7 +8,7 @@
         Title="SudokuGame" Height="450" Width="800" MinWidth="800" MinHeight="450">
     <Grid x:Name="grid1">
         <Button x:Name="btn_create" Content="Create Sudoku" HorizontalAlignment="Left" Margin="34,26,0,0" VerticalAlignment="Top" Height="37" Width="108" Click="btn_create_Click"/>
-        <TextBox x:Name="txt_output" HorizontalAlignment="Left" Margin="196,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="148" Height="35"/>
+        <TextBox x:Name="txt_output" HorizontalAlignment="Left" Margin="196,10,0,0" TextWrapping="Wrap" Text="Time passed: 00:01" VerticalAlignment="Top" Width="148" Height="35"/>
 
         <Grid x:Name="grid_sudoku" Width="300" Height="297">
             <Grid.ColumnDefinitions>
@@ -231,5 +231,7 @@
             </Border>
             <Grid/>
         </Grid>
+        <Button x:Name="btn_save" Content="Save Sudoku" HorizontalAlignment="Left" Margin="34,108,0,0" VerticalAlignment="Top" Height="37" Width="108" Click="btn_create_Click"/>
+        <Button x:Name="btn_load" Content="Load Sudoku" HorizontalAlignment="Left" Margin="34,194,0,0" VerticalAlignment="Top" Height="37" Width="108" Click="btn_create_Click"/>
     </Grid>
 </Window>
