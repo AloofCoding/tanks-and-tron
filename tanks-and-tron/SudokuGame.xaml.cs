@@ -125,6 +125,7 @@ namespace tanks_and_tron
             }
             ok = false;
 
+            MessageBox.Show("Block 1 & 2");
             //block 3
             List<int> numbersforblock3 = new List<int>();
             numbersforblock3.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
@@ -186,6 +187,7 @@ namespace tanks_and_tron
             txt_321.Text = block3[2, 1].ToString();
             txt_322.Text = block3[2, 2].ToString();
 
+            MessageBox.Show("block 3");
             //block4
             while (!ok)
             {
@@ -239,7 +241,7 @@ namespace tanks_and_tron
             }
             ok = false;
 
-
+            MessageBox.Show("block 4");
 
             //block 7
             List<int> numbersforblock7 = new List<int>();
@@ -301,7 +303,7 @@ namespace tanks_and_tron
             txt_702.Text = block7[0, 2].ToString();
             txt_712.Text = block7[1, 2].ToString();
             txt_722.Text = block7[2, 2].ToString();
-
+            MessageBox.Show("block 7");
             //block 5
 
             //ToDo: edit list from which random numbers are chosen by deleting numbers which e.g. interfere with block 2, so the chance to get a correct combination rises
@@ -374,119 +376,226 @@ namespace tanks_and_tron
             }
             ok=false;
 
+            MessageBox.Show("block 5");
+
             //block 6
-            List<int> numbersforblock6 = new List<int>();
-            numbersforblock6.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
+            bool retry = false;
+            HashSet<int> set1 = new HashSet<int>();
+            HashSet<int> set2 = new HashSet<int>();
+            HashSet<int> set3 = new HashSet<int>();
 
-            numbersforblock6.Remove(block5[0, 0]);
-            numbersforblock6.Remove(block5[0, 1]);
-            numbersforblock6.Remove(block5[0, 2]);
-            numbersforblock6.Remove(block4[0, 0]);
-            numbersforblock6.Remove(block4[0, 1]);
-            numbersforblock6.Remove(block4[0, 2]);
-
-
-            bool col1 = false;
-            bool col2 = false;
-            bool col3 = false;
-
-            while (!col1 && !col2 && !col3)
+            do
             {
-                numbersforblock6.OrderBy(c => rnd.Next()).ToArray();
-                block6[0, 0] = numbersforblock6.ElementAt<int>(0);
-                block6[0, 1] = numbersforblock6.ElementAt<int>(1);
-                block6[0, 2] = numbersforblock6.ElementAt<int>(2);
-                HashSet<int> set1 = new HashSet<int>();
-                set1.Add(block3[0, 0]);
-                set1.Add(block3[1, 0]);
-                set1.Add(block3[2, 0]);
-                set1.Add(block6[0, 0]);
-                if(set1.Count > 3)
+                List<int> numbersforblock6 = new List<int>();
+                numbersforblock6.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
+
+                numbersforblock6.Remove(block5[0, 0]);
+                numbersforblock6.Remove(block5[0, 1]);
+                numbersforblock6.Remove(block5[0, 2]);
+                numbersforblock6.Remove(block4[0, 0]);
+                numbersforblock6.Remove(block4[0, 1]);
+                numbersforblock6.Remove(block4[0, 2]);
+
+
+                bool ok1 = false;
+                int i6 = 0;
+                Comparison comparer = new Comparison();
+                Comp2 comp2 = new Comp2();
+                while (!ok1)
                 {
-                    col1 = true;
+                    switch (i6)
+                    {
+                        case 1:
+                            numbersforblock6.Sort(comparer);
+                            break;
+                        case 2:
+                            numbersforblock6.Sort(comp2);
+                            break;
+                        default:
+                            numbersforblock6.OrderBy(c => rnd.Next()).ToList();
+                            break;
+                    }
+                    block6[0, 0] = numbersforblock6.ElementAt<int>(0);
+                    block6[0, 1] = numbersforblock6.ElementAt<int>(1);
+                    block6[0, 2] = numbersforblock6.ElementAt<int>(2);
+
+                    set1.Clear();
+                    set2.Clear();
+                    set3.Clear();
+
+                    set1.Add(block3[0, 0]);
+                    set1.Add(block3[1, 0]);
+                    set1.Add(block3[2, 0]);
+                    set1.Add(block6[0, 0]);
+
+                    set2.Add(block3[0, 1]);
+                    set2.Add(block3[1, 1]);
+                    set2.Add(block3[2, 1]);
+                    set2.Add(block6[0, 1]);
+
+                    set3.Add(block3[0, 2]);
+                    set3.Add(block3[1, 2]);
+                    set3.Add(block3[2, 2]);
+                    set3.Add(block6[0, 2]);
+
+                    if (set1.Count > 3 && set2.Count > 3 && set3.Count > 3)
+                    {
+                        ok1 = true;
+                    }
+                    else if (i6 > 10)
+                    {
+                        retry = true;
+                        break;
+                    }
+
+                    i6++;
                 }
-                else
+
+                txt_600.Text = block6[0, 0].ToString();
+                txt_601.Text = block6[0, 1].ToString();
+                txt_602.Text = block6[0, 2].ToString();
+
+                List<int> numbersforblock6row2 = new List<int>();
+                numbersforblock6row2.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
+
+                numbersforblock6row2.Remove(block5[1, 0]);
+                numbersforblock6row2.Remove(block5[1, 1]);
+                numbersforblock6row2.Remove(block5[1, 2]);
+                numbersforblock6row2.Remove(block4[1, 0]);
+                numbersforblock6row2.Remove(block4[1, 1]);
+                numbersforblock6row2.Remove(block4[1, 2]);
+
+                bool ok2 = false;
+                i6 = 0;
+                while (!ok2)
                 {
-                    col1 = false;
+                    switch (i6)
+                    {
+                        case 1:
+                            numbersforblock6row2.Sort(comparer);
+                            break;
+                        case 2:
+                            numbersforblock6row2.Sort(comp2);
+                            break;
+                        default:
+                            numbersforblock6row2.OrderBy(c => rnd.Next()).ToList();
+                            break;
+                    }
+
+                    block6[1, 0] = numbersforblock6row2.ElementAt<int>(0);
+                    block6[1, 1] = numbersforblock6row2.ElementAt<int>(1);
+                    block6[1, 2] = numbersforblock6row2.ElementAt<int>(2);
+
+                    set1.Clear();
+                    set2.Clear();
+                    set3.Clear();
+
+                    set1.Add(block3[0, 0]);
+                    set1.Add(block3[1, 0]);
+                    set1.Add(block3[2, 0]);
+                    set1.Add(block6[2, 0]);
+
+                    set2.Add(block3[0, 1]);
+                    set2.Add(block3[1, 1]);
+                    set2.Add(block3[2, 1]);
+                    set2.Add(block6[2, 1]);
+
+                    set3.Add(block3[0, 2]);
+                    set3.Add(block3[1, 2]);
+                    set3.Add(block3[2, 2]);
+                    set3.Add(block6[2, 2]);
+
+                    if (set1.Count > 3 && set2.Count > 3 && set3.Count > 3)
+                    {
+                        ok2 = true;
+                    }
+                    else if (i6 > 10)
+                    {
+                        retry = true;
+                        break;
+                    }
+
+                    i6++;
                 }
 
-                HashSet<int> set2 = new HashSet<int>();
-                set2.Add(block3[0, 1]);
-                set2.Add(block3[1, 1]);
-                set2.Add(block3[2, 1]);
-                set2.Add(block6[0, 1]);
+                txt_610.Text = block6[1, 0].ToString();
+                txt_611.Text = block6[1, 1].ToString();
+                txt_612.Text = block6[1, 2].ToString();
 
-                if (set2.Count > 3)
+                List<int> numbersforblock6row3 = new List<int>();
+                numbersforblock6row3.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
+
+                numbersforblock6row3.Remove(block5[2, 0]);
+                numbersforblock6row3.Remove(block5[2, 1]);
+                numbersforblock6row3.Remove(block5[2, 2]);
+                numbersforblock6row3.Remove(block4[2, 0]);
+                numbersforblock6row3.Remove(block4[2, 1]);
+                numbersforblock6row3.Remove(block4[2, 2]);
+
+                i6 = 0;
+                bool ok3 = false;
+                while (!ok3)
                 {
-                    col2 = true;
+                    switch (i6)
+                    {
+                        case 1:
+                            numbersforblock6row3.Sort(comparer);
+                            break;
+                        case 2:
+                            numbersforblock6row3.Sort(comp2);
+                            break;
+                        default:
+                            numbersforblock6row3.OrderBy(c => rnd.Next()).ToList();
+                            break;
+                    }
+
+                    block6[2, 0] = numbersforblock6row3.ElementAt<int>(0);
+                    block6[2, 1] = numbersforblock6row3.ElementAt<int>(1);
+                    block6[2, 2] = numbersforblock6row3.ElementAt<int>(2);
+
+                    set1.Clear();
+                    set2.Clear();
+                    set3.Clear();
+
+                    set1.Add(block3[0, 0]);
+                    set1.Add(block3[1, 0]);
+                    set1.Add(block3[2, 0]);
+                    set1.Add(block6[2, 0]);
+
+                    set2.Add(block3[0, 1]);
+                    set2.Add(block3[1, 1]);
+                    set2.Add(block3[2, 1]);
+                    set2.Add(block6[2, 1]);
+
+                    set3.Add(block3[0, 2]);
+                    set3.Add(block3[1, 2]);
+                    set3.Add(block3[2, 2]);
+                    set3.Add(block6[2, 2]);
+
+                    if (set1.Count > 3 && set2.Count > 3 && set3.Count > 3)
+                    {
+                        ok3 = true;
+                    }
+                    else if (i6 > 10)
+                    {
+                        retry = true;
+                        break;
+                    }
+                    i6++;
                 }
-                else
+
+                txt_620.Text = block6[2, 0].ToString();
+                txt_621.Text = block6[2, 1].ToString();
+                txt_622.Text = block6[2, 2].ToString();
+
+                if (ok1 && ok2 && ok3)
                 {
-                    col2 = false;
+                    retry = false;
                 }
 
-                HashSet<int> set3 = new HashSet<int>();
-                set3.Add(block3[0, 2]);
-                set3.Add(block3[1, 2]);
-                set3.Add(block3[2, 2]);
-                set3.Add(block6[0, 2]);
+            } while (retry);
 
-                if (set3.Count > 3)
-                {
-                    col3 = true;
-                }
-                else
-                {
-                    col3 = false;
-                }
-            }
-            ok = false;
-
-            // Check: block 6 and every random order
-
-            txt_600.Text = block6[0, 0].ToString();
-            txt_601.Text = block6[0, 1].ToString();
-            txt_602.Text = block6[0, 2].ToString();
-
-            List<int> numbersforblock6col2 = new List<int>();
-            numbersforblock6col2.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
-
-            numbersforblock6col2.Remove(block5[1, 0]);
-            numbersforblock6col2.Remove(block5[1, 1]);
-            numbersforblock6col2.Remove(block5[1, 2]);
-            numbersforblock6col2.Remove(block4[1, 0]);
-            numbersforblock6col2.Remove(block4[1, 1]);
-            numbersforblock6col2.Remove(block4[1, 2]);
-
-            numbersforblock6col2.OrderBy(c => rnd.Next()).ToArray();
-
-            block6[1, 0] = numbersforblock6col2.ElementAt<int>(0);
-            block6[1, 1] = numbersforblock6col2.ElementAt<int>(1);
-            block6[1, 2] = numbersforblock6col2.ElementAt<int>(2);
-
-            txt_610.Text = block6[1, 0].ToString();
-            txt_611.Text = block6[1, 1].ToString();
-            txt_612.Text = block6[1, 2].ToString();
-
-            List<int> numbersforblock6row3 = new List<int>();
-            numbersforblock6row3.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
-
-            numbersforblock6row3.Remove(block5[2, 0]);
-            numbersforblock6row3.Remove(block5[2, 1]);
-            numbersforblock6row3.Remove(block5[2, 2]);
-            numbersforblock6row3.Remove(block4[2, 0]);
-            numbersforblock6row3.Remove(block4[2, 1]);
-            numbersforblock6row3.Remove(block4[2, 2]);
-
-            numbersforblock6row3.OrderBy(c => rnd.Next()).ToArray();
-
-            block6[2, 0] = numbersforblock6row3.ElementAt<int>(0);
-            block6[2, 1] = numbersforblock6row3.ElementAt<int>(1);
-            block6[2, 2] = numbersforblock6row3.ElementAt<int>(2);
-
-            txt_620.Text = block6[2, 0].ToString();
-            txt_621.Text = block6[2, 1].ToString();
-            txt_622.Text = block6[2, 2].ToString();
+            MessageBox.Show("block 6");
 
             //block 8
             List<int> numbersforblock8col1 = new List<int>();
@@ -539,7 +648,10 @@ namespace tanks_and_tron
                 block8[1, 2] = numbers.ElementAt<int>(1);
                 block8[2, 2] = numbers.ElementAt<int>(2);
 
-                HashSet<int> set1 = new HashSet<int>();
+                set1.Clear();
+                set2.Clear();
+                set3.Clear();
+
                 set1.Add(block7[0, 0]);
                 set1.Add(block7[0, 1]);
                 set1.Add(block7[0, 2]);
@@ -547,7 +659,6 @@ namespace tanks_and_tron
                 set1.Add(block8[0, 1]);
                 set1.Add(block8[0, 2]);
 
-                HashSet<int> set2 = new HashSet<int>();
                 set2.Add(block7[1, 0]);
                 set2.Add(block7[1, 1]);
                 set2.Add(block7[1, 2]);
@@ -555,7 +666,6 @@ namespace tanks_and_tron
                 set2.Add(block8[1, 1]);
                 set2.Add(block8[1, 2]);
 
-                HashSet<int> set3 = new HashSet<int>();
                 set3.Add(block7[2, 0]);
                 set3.Add(block7[2, 1]);
                 set3.Add(block7[2, 2]);
@@ -581,20 +691,117 @@ namespace tanks_and_tron
                     incorrect = false;
                 }
             }
+            MessageBox.Show("block 8");
 
             //ToDo: OBJEKTORIENTIERUNG
 
             //ToDo: block 9
-            //List<int> numbersforblock9 = new List<int>();
-            //numbersforblock9.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
+            List<int> numbersforblock9col1 = new List<int>();
+            numbersforblock9col1.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
 
-            //numbersforblock9.Remove(block7[0, 0]);
-            //numbersforblock9.Remove(block7[0, 1]);
-            //numbersforblock9.Remove(block7[0, 2]);
-            //numbersforblock9.Remove(block8[0, 0]);
-            //numbersforblock9.Remove(block8[0, 1]);
-            //numbersforblock9.Remove(block8[0, 2]);
+            numbersforblock9col1.Remove(block3[0, 0]);
+            numbersforblock9col1.Remove(block3[1, 0]);
+            numbersforblock9col1.Remove(block3[2, 0]);
+            numbersforblock9col1.Remove(block6[0, 0]);
+            numbersforblock9col1.Remove(block6[1, 0]);
+            numbersforblock8col1.Remove(block6[2, 0]);
 
+            List<int> numbersforblock9col2 = new List<int>();
+            numbersforblock9col2.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
+
+            numbersforblock9col2.Remove(block3[0, 1]);
+            numbersforblock9col2.Remove(block3[1, 1]);
+            numbersforblock9col2.Remove(block3[2, 1]);
+            numbersforblock9col2.Remove(block6[0, 1]);
+            numbersforblock9col2.Remove(block6[1, 1]);
+            numbersforblock9col2.Remove(block6[2, 1]);
+
+            List<int> numbersforblock9col3 = new List<int>();
+            numbersforblock9col3.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
+
+            numbersforblock9col3.Remove(block3[0, 2]);
+            numbersforblock9col3.Remove(block3[1, 2]);
+            numbersforblock9col3.Remove(block3[2, 2]);
+            numbersforblock9col3.Remove(block6[0, 2]);
+            numbersforblock9col3.Remove(block6[1, 2]);
+            numbersforblock9col3.Remove(block6[2, 2]);
+
+
+            incorrect = true;
+
+            while (incorrect)
+            {
+                List<int> numbers = numbersforblock9col1.OrderBy(c => rnd.Next()).ToList();
+                block9[0, 0] = numbers.ElementAt<int>(0);
+                block9[1, 0] = numbers.ElementAt<int>(1);
+                block9[2, 0] = numbers.ElementAt<int>(2);
+
+                numbers = numbersforblock9col2.OrderBy(c => rnd.Next()).ToList();
+                block9[0, 1] = numbers.ElementAt<int>(0);
+                block9[1, 1] = numbers.ElementAt<int>(1);
+                block9[2, 1] = numbers.ElementAt<int>(2);
+
+                numbers = numbersforblock9col3.OrderBy(c => rnd.Next()).ToList();
+                block9[0, 2] = numbers.ElementAt<int>(0);
+                block9[1, 2] = numbers.ElementAt<int>(1);
+                block9[2, 2] = numbers.ElementAt<int>(2);
+
+                set1.Clear();
+                set2.Clear();
+                set3.Clear();
+
+                set1.Add(block7[0, 0]);
+                set1.Add(block7[0, 1]);
+                set1.Add(block7[0, 2]);
+                set1.Add(block9[0, 0]);
+                set1.Add(block9[0, 1]);
+                set1.Add(block9[0, 2]);
+                set1.Add(block8[0, 0]);
+                set1.Add(block8[0, 1]);
+                set1.Add(block8[0, 2]);
+
+                set2.Add(block7[1, 0]);
+                set2.Add(block7[1, 1]);
+                set2.Add(block7[1, 2]);
+                set2.Add(block9[1, 0]);
+                set2.Add(block9[1, 1]);
+                set2.Add(block9[1, 2]);
+                set2.Add(block8[1, 0]);
+                set2.Add(block8[1, 1]);
+                set2.Add(block8[1, 2]);
+
+                set3.Add(block7[2, 0]);
+                set3.Add(block7[2, 1]);
+                set3.Add(block7[2, 2]);
+                set3.Add(block9[2, 0]);
+                set3.Add(block9[2, 1]);
+                set3.Add(block9[2, 2]);
+                set3.Add(block8[2, 0]);
+                set3.Add(block8[2, 1]);
+                set3.Add(block8[2, 2]);
+
+
+                txt_900.Text = block9[0, 0].ToString();
+                txt_910.Text = block9[1, 0].ToString();
+                txt_920.Text = block9[2, 0].ToString();
+
+                txt_901.Text = block9[0, 1].ToString();
+                txt_911.Text = block9[1, 1].ToString();
+                txt_921.Text = block9[2, 1].ToString();
+
+                txt_902.Text = block9[0, 2].ToString();
+                txt_912.Text = block9[1, 2].ToString();
+                txt_922.Text = block9[2, 2].ToString();
+
+                MessageBox.Show(set1.Count.ToString() + ", " + set2.Count.ToString() + ", " + set3.Count.ToString());
+                if (set1.Count == 9 && set2.Count == 9 && set3.Count == 9)
+                {
+                    incorrect = false;
+                }
+
+            }
+
+            MessageBox.Show("block 9");
 
             //col1 = false;
             //col2 = false;
@@ -714,105 +921,32 @@ namespace tanks_and_tron
 
         }
 
+        class Comparison : IComparer<int>
+        {
+            public int Compare(int x, int y)
+            {
+                if (x == 0 || y == 0)
+                {
+                    return 0;
+                }
 
-        //private void comment() 
-        //{ 
-        //    #region RowColumnBlock
-        //    bool secondrow = false;
-        //    int[,] grid = new int[9, 9];
-        //    Random rnd = new Random();
-        //    bool reshuffle = false;
-        //    bool reshuffleBlock = false;
+                // CompareTo() method
+                return x.CompareTo(y);
+            }
+        }
 
-        //    for (int iy = 0; iy < 9; iy++)
-        //    {
-        //        int[] arr = Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray();
-        //        for (int ix = 0; ix < 9; ix++)
-        //        {
-        //            grid[iy, ix] = arr[ix]; //adds shuffled numbers 1-9 to grid (horizontal line)
-        //        }
+        class Comp2 : IComparer<int>
+        {
+            public int Compare(int x, int y)
+            {
+                if (x == 0 || y == 0)
+                {
+                    return 0;
+                }
 
-        //        #region check of columns
-        //        if (secondrow) //activated after second row
-        //        {
-        //            for (int ix = 0; ix < 9; ix++) // ix = number of column
-        //            {
-        //                HashSet<int> set = new HashSet<int>();
-        //                for (int i = 0; i <= iy; i++)
-        //                {
-        //                    /*adding 
-        //                     * 0,0 | 
-        //                     * 1,0 | 
-        //                     * ... 
-        //                     * then checking whether the numbers are unique in that column*/
-        //                    set.Add(grid[i, ix]);
-        //                }
-        //                if (set.Count <= iy)
-        //                {
-        //                    reshuffle = true;
-        //                    break;
-        //                }
-        //            }
-        //        }
-        //        #endregion
-
-        //        #region check of blocks
-        //        // is unable to write sth in textbox aka doesn't reach conclusion
-        //        if ((iy + 1) / 3 == 1)
-        //        {
-        //            HashSet<int> set = new HashSet<int>();
-        //            for (int i1 = 0; i1 < 2; i1++)
-        //            {
-        //                for (int i2 = 0; i2 < 2; i2++)
-        //                {
-        //                    set.Add(grid[i1, i2]);
-        //                }
-        //            }
-        //            if (set.Count < 9)
-        //            {
-        //                reshuffleBlock = true;
-        //            }
-        //        }
-
-        //        #endregion
-
-        //        #region Consequences of Checking
-        //        if (!reshuffle && !reshuffleBlock)
-        //        {
-        //            for (int i = iy; i <= iy; i++)
-        //            {
-        //                txt_output.Text += grid[i, 0] + " | " + grid[i, 1] + " | " + grid[i, 2] + " | " + grid[i, 3] + " | " + grid[i, 4] + " | " + grid[i, 5] + " | " + grid[i, 6] + " | " + grid[i, 7] + " | " + grid[i, 8] + Environment.NewLine;
-        //            }
-        //        }
-        //        else if (reshuffle)
-        //        {
-        //            MessageBox.Show("reshuffle = true");
-        //            iy -= 1;
-        //            for (int ix = 0; ix < 9; ix++)
-        //            {
-        //                grid[iy, ix] = 10; //adds shuffled numbers 1-9 to grid (horizontal line)
-        //            }
-        //            reshuffle = false;
-        //        }
-        //        else if (reshuffleBlock)
-        //        {
-        //            MessageBox.Show("reshuffle Block = true");
-        //            iy -= 2;
-        //            for (int ix = 0; ix < 9; ix++)
-        //            {
-        //                grid[iy, ix] = 10; //adds shuffled numbers 1-9 to grid (horizontal line)
-        //            }
-        //            reshuffleBlock = false;
-        //        }
-        //        #endregion
-
-        //        // Do: implement checking of 3x3 boxes and combine it with check of columns
-
-        //        secondrow = true;
-        //    }
-
-        //    btn_create.IsEnabled = true; 
-        //    #endregion
-        //}
+                // CompareTo() method
+                return y.CompareTo(x);
+            }
+        }
     }
 }
