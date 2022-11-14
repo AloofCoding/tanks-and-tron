@@ -918,7 +918,6 @@ namespace tanks_and_tron
 
             btn_create.IsEnabled = true;
             #endregion
-
         }
 
         class Comparison : IComparer<int>
