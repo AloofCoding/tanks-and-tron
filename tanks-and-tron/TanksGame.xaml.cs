@@ -31,6 +31,10 @@ namespace tanks_and_tron
             dTimer = new DispatcherTimer();
             dTimer.Interval = TimeSpan.FromMilliseconds(100);
             dTimer.Tick += DTimer_Tick;
+
+            MouseMove += Window_MouseMove_1;
+            KeyDown += MainGrid_KeyDown;
+
         }
 
         private void DTimer_Tick(object? sender, EventArgs e)
@@ -39,59 +43,136 @@ namespace tanks_and_tron
             //move bullet
         }
 
-        double x = 0.0;
-        double y = 0.0;
+        double xt = 0.0;
+        double yt = 0.0;
+        double xc = 0.0;
+        double yc = 0.0;
+
+        private double translateX;
+
+        public double TranslateX
+        {
+            get { return translateX; }
+            set { translateX = value; }
+        }
+
+        private double translateY;
+
+        public double TranslateY
+        {
+            get { return translateY; }
+            set { translateY = value; }
+        }
+
+        private float storeAngle;
+
+        public float StoreAngle
+        {
+            get { return storeAngle; }
+            set { storeAngle = value; }
+        }
+
 
         private void MainGrid_KeyDown(object sender, KeyEventArgs e)
         {
+            var tfg_tank = new TransformGroup();
+            var tfg_cannon = new TransformGroup();
             #region not margin version
             if (e.Key == Key.W && Keyboard.IsKeyDown(Key.D) || e.Key == Key.D && Keyboard.IsKeyDown(Key.W))
             {
-                tank.RenderTransform = new RotateTransform(45.0);
-                tank.RenderTransform = new TranslateTransform(x += 10.0, y -= 10.0);
-                cannon.RenderTransform = tank.RenderTransform;                
+                TranslateX = 1.25;
+                TranslateY = -1.25;
+                tfg_tank.Children.Add(new RotateTransform(41.25));
+                tfg_tank.Children.Add(new TranslateTransform(xt += TranslateX, yt += TranslateY));
+                tfg_cannon.Children.Add(new RotateTransform(StoreAngle));
+                tfg_cannon.Children.Add(new TranslateTransform(xc += TranslateX, yc += TranslateY));
+
+                tank.RenderTransform = tfg_tank;   
+                cannon.RenderTransform = tfg_cannon;
             }
             else if (e.Key == Key.S && Keyboard.IsKeyDown(Key.D) || e.Key == Key.D && Keyboard.IsKeyDown(Key.S))
             {
-                tank.RenderTransform = new RotateTransform(135.0);
-                tank.RenderTransform = new TranslateTransform(x += 10.0, y += 10.0);
-                cannon.RenderTransform = tank.RenderTransform;
+                TranslateX = 1.25;
+                TranslateY = 1.25;
+                tfg_tank.Children.Add(new RotateTransform(131.25));
+                tfg_tank.Children.Add(new TranslateTransform(xt += TranslateX, yt += TranslateY));
+                tfg_cannon.Children.Add(new RotateTransform(StoreAngle));
+                tfg_cannon.Children.Add(new TranslateTransform(xc += TranslateX, yc += TranslateY));
+
+                tank.RenderTransform = tfg_tank;
+                cannon.RenderTransform = tfg_cannon;
             }
             else if (e.Key == Key.S && Keyboard.IsKeyDown(Key.A) || e.Key == Key.A && Keyboard.IsKeyDown(Key.S))
             {
-                tank.RenderTransform = new RotateTransform(225.0);
-                tank.RenderTransform = new TranslateTransform(x -= 10.0, y += 10.0);
-                cannon.RenderTransform = tank.RenderTransform;
+                TranslateX = -1.25;
+                TranslateY = 1.25;
+                tfg_tank.Children.Add(new RotateTransform(221.25));
+                tfg_tank.Children.Add(new TranslateTransform(xt += TranslateX, yt += TranslateY));
+                tfg_cannon.Children.Add(new RotateTransform(StoreAngle));
+                tfg_cannon.Children.Add(new TranslateTransform(xc += TranslateX, yc += TranslateY));
+
+                tank.RenderTransform = tfg_tank;
+                cannon.RenderTransform = tfg_cannon;
             }
             else if (e.Key == Key.W && Keyboard.IsKeyDown(Key.A) || e.Key == Key.A && Keyboard.IsKeyDown(Key.W))
             {
-                tank.RenderTransform = new RotateTransform(315.0);
-                tank.RenderTransform = new TranslateTransform(x -= 10.0, y -= 10.0);
-                cannon.RenderTransform = tank.RenderTransform;
+                TranslateX = -1.25;
+                TranslateY = -1.25;
+                tfg_tank.Children.Add(new RotateTransform(311.25));
+                tfg_tank.Children.Add(new TranslateTransform(xt += TranslateX, yt += TranslateY));
+                tfg_cannon.Children.Add(new RotateTransform(StoreAngle));
+                tfg_cannon.Children.Add(new TranslateTransform(xc += TranslateX, yc += TranslateY));
+
+                tank.RenderTransform = tfg_tank;
+                cannon.RenderTransform = tfg_cannon;
             }
             else if (e.Key == Key.S)
             {
-                tank.RenderTransform = new RotateTransform(180.0);
-                tank.RenderTransform = new TranslateTransform(x += 0.0, y += 10.0);
-                cannon.RenderTransform = tank.RenderTransform;
+                TranslateX = 0.0;
+                TranslateY = 2.5;
+                tfg_tank.Children.Add(new RotateTransform(180.0));
+                tfg_tank.Children.Add(new TranslateTransform(xt += TranslateX, yt += TranslateY));
+                tfg_cannon.Children.Add(new RotateTransform(StoreAngle));
+                tfg_cannon.Children.Add(new TranslateTransform(xc += TranslateX, yc += TranslateY));
+
+                tank.RenderTransform = tfg_tank;
+                cannon.RenderTransform = tfg_cannon;
             }
             else if (e.Key == Key.W)
             {
-                tank.RenderTransform = new RotateTransform(0.0);
-                tank.RenderTransform = new TranslateTransform(x += 0.0, y -= 10.0);
-                cannon.RenderTransform = tank.RenderTransform;
+                TranslateX = 0.0;
+                TranslateY = -2.5;
+                tfg_tank.Children.Add(new RotateTransform(0.0));
+                tfg_tank.Children.Add(new TranslateTransform(xt += TranslateX, yt += TranslateY));
+                tfg_cannon.Children.Add(new RotateTransform(StoreAngle));
+                tfg_cannon.Children.Add(new TranslateTransform(xc += TranslateX, yc += TranslateY));
+
+                tank.RenderTransform = tfg_tank;
+                cannon.RenderTransform = tfg_cannon;
             }
             else if (e.Key == Key.A)
             {
-                tank.RenderTransform = new RotateTransform(270.0);
-                tank.RenderTransform = new TranslateTransform(x -= 10.0, y += 0.0);
-                cannon.RenderTransform = tank.RenderTransform;
+                TranslateX = -2.5;
+                TranslateY = 0.0;
+                tfg_tank.Children.Add(new RotateTransform(270.0));
+                tfg_tank.Children.Add(new TranslateTransform(xt += TranslateX, yt += TranslateY));
+                tfg_cannon.Children.Add(new RotateTransform(StoreAngle));
+                tfg_cannon.Children.Add(new TranslateTransform(xc += TranslateX, yc += TranslateY));
+
+                tank.RenderTransform = tfg_tank;
+                cannon.RenderTransform = tfg_cannon;
             }
             else if (e.Key == Key.D)
             {
-                tank.RenderTransform = new RotateTransform(90.0);
-                tank.RenderTransform = new TranslateTransform(x += 10.0, y -= 0.0);
-                cannon.RenderTransform = tank.RenderTransform;
+                TranslateX = 2.5;
+                TranslateY = 0.0;
+                tfg_tank.Children.Add(new RotateTransform(90.0));
+                tfg_tank.Children.Add(new TranslateTransform(xt += TranslateX, yt += TranslateY));
+                tfg_cannon.Children.Add(new RotateTransform(StoreAngle));
+                tfg_cannon.Children.Add(new TranslateTransform(xc += TranslateX, yc += TranslateY));
+
+                tank.RenderTransform = tfg_tank;
+                cannon.RenderTransform = tfg_cannon;
             }
             else
             {
@@ -202,13 +283,28 @@ namespace tanks_and_tron
         private void Window_MouseMove_1(object sender, MouseEventArgs e)
         {
             #region not margin version
-            //here would be my code for a non margin cannon rotation
-            //...
-            //if i'd have one
+            System.Windows.Point point = e.GetPosition(MainGrid);
+            System.Windows.Point pos = cannon.TranslatePoint(new System.Windows.Point(0, 0), MainGrid);
+            var cannon_X = pos.X + cannon.Width / 2;
+            var cannon_Y = pos.Y + cannon.Height / 2;
+
+            double side_b = cannon_X - point.X;
+            double side_a = cannon_Y - point.Y;
+
+            float angle = (float)Math.Atan2(side_b, side_a) * (float)(180 / Math.PI) * (-1);
+            StoreAngle = angle;
+
+            var tfg = new TransformGroup();
+            tfg.Children.Add(new RotateTransform(StoreAngle));
+            tfg.Children.Add(new TranslateTransform(xc, yc));
+
+            cannon.RenderTransform = tfg;
+            cannon.UpdateLayout();
             #endregion
 
-            #region margin version
             
+            #region margin version
+            /*
             System.Windows.Point point = e.GetPosition(MainGrid);
             var cannon_X = cannon.Margin.Left + cannon.Width/2;
             var cannon_Y = cannon.Margin.Top + cannon.Height/2;
@@ -223,8 +319,8 @@ namespace tanks_and_tron
             //MessageBox.Show(angle.ToString());
 
             cannon.RenderTransform = new RotateTransform(angle);
-            
-            #endregion
+            */
+            #endregion            
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -263,17 +359,17 @@ namespace tanks_and_tron
             #endregion
 
 
-            System.Windows.Point point = e.GetPosition(MainGrid);
-            var cannon_X = cannon.Margin.Left + cannon.Width / 2;
-            var cannon_Y = cannon.Margin.Top + cannon.Height / 2;
-            double side_a;
-            double side_b;
+            //System.Windows.Point point = e.GetPosition(MainGrid);
+            //var cannon_X = cannon.Margin.Left + cannon.Width / 2;
+            //var cannon_Y = cannon.Margin.Top + cannon.Height / 2;
+            //double side_a;
+            //double side_b;
 
-            side_b = cannon_X - point.X;
-            side_a = cannon_Y - point.Y;
+            //side_b = cannon_X - point.X;
+            //side_a = cannon_Y - point.Y;
 
-            float angle = (float)Math.Atan2(side_b, side_a) * (float)(180 / Math.PI) * (-1);
-            cannon.RenderTransform = new RotateTransform(angle);
+            //float angle = (float)Math.Atan2(side_b, side_a) * (float)(180 / Math.PI) * (-1);
+            //cannon.RenderTransform = new RotateTransform(angle);
 
             dTimer.Start();
             //get angle from cannon
@@ -282,5 +378,7 @@ namespace tanks_and_tron
             //prevent spawning bullets on click spam
             dTimer.Stop();
         }
+
+       
     }
 }
