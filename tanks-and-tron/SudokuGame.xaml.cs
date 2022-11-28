@@ -43,7 +43,6 @@ namespace tanks_and_tron
         int[,] block8 = new int[3, 3];
         int[,] block9 = new int[3, 3];
 
-        string array9 = "";
         int s1;
         int s2;
         int s3;
@@ -51,7 +50,6 @@ namespace tanks_and_tron
 
         private void CreateSudoku() 
         {
-            #region AttemptBlocks
             bool ok = false;
             int countrows;
             Random rnd = new Random();
@@ -61,12 +59,11 @@ namespace tanks_and_tron
             s3 = 0;
 
 
-
-            //blocks 1 and 2
+            #region block 1, 2
             while (!ok)
             {
                 int i = 0;
-                countrows = 0;   
+                countrows = 0;
                 for (int i1 = 0; i1 < 3; i1++)
                 {
                     for (int i2 = 0; i2 < 3; i2++)
@@ -125,34 +122,34 @@ namespace tanks_and_tron
                         countrows++;
                     }
                 }
-                if(countrows >= 3)
+                if (countrows >= 3)
                 {
                     ok = true;
                 }
             }
             ok = false;
 
-            MessageBox.Show("Block 1 & 2");
-            //block 3
+            //MessageBox.Show("Block 1 & 2");
+
+            #endregion
+
+            #region block 3
             List<int> numbersforblock3 = new List<int>();
             numbersforblock3.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
-            
+
             numbersforblock3.Remove(block1[0, 0]);
             numbersforblock3.Remove(block1[0, 1]);
             numbersforblock3.Remove(block1[0, 2]);
             numbersforblock3.Remove(block2[0, 0]);
             numbersforblock3.Remove(block2[0, 1]);
             numbersforblock3.Remove(block2[0, 2]);
-            
+
             numbersforblock3.OrderBy(c => rnd.Next()).ToArray();
 
             block3[0, 0] = numbersforblock3.ElementAt<int>(0);
             block3[0, 1] = numbersforblock3.ElementAt<int>(1);
             block3[0, 2] = numbersforblock3.ElementAt<int>(2);
 
-            txt_300.Text = block3[0, 0].ToString();
-            txt_301.Text = block3[0, 1].ToString();
-            txt_302.Text = block3[0, 2].ToString();
 
             List<int> numbersforblock3row2 = new List<int>();
             numbersforblock3row2.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
@@ -170,9 +167,7 @@ namespace tanks_and_tron
             block3[1, 1] = numbersforblock3row2.ElementAt<int>(1);
             block3[1, 2] = numbersforblock3row2.ElementAt<int>(2);
 
-            txt_310.Text = block3[1, 0].ToString();
-            txt_311.Text = block3[1, 1].ToString();
-            txt_312.Text = block3[1, 2].ToString();
+            
 
             List<int> numbersforblock3row3 = new List<int>();
             numbersforblock3row3.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
@@ -190,12 +185,21 @@ namespace tanks_and_tron
             block3[2, 1] = numbersforblock3row3.ElementAt<int>(1);
             block3[2, 2] = numbersforblock3row3.ElementAt<int>(2);
 
+            txt_300.Text = block3[0, 0].ToString();
+            txt_301.Text = block3[0, 1].ToString();
+            txt_302.Text = block3[0, 2].ToString();
+            txt_310.Text = block3[1, 0].ToString();
+            txt_311.Text = block3[1, 1].ToString();
+            txt_312.Text = block3[1, 2].ToString();
             txt_320.Text = block3[2, 0].ToString();
             txt_321.Text = block3[2, 1].ToString();
             txt_322.Text = block3[2, 2].ToString();
 
-            MessageBox.Show("block 3");
-            //block4
+            //MessageBox.Show("block 3");
+
+            #endregion
+
+            #region block 4
             while (!ok)
             {
                 int i = 0;
@@ -248,12 +252,11 @@ namespace tanks_and_tron
             }
             ok = false;
 
-            MessageBox.Show("block 4");
+            //MessageBox.Show("block 4");
 
-            
+            #endregion
 
-            //block 5
-
+            #region block 5
             //ToDo: edit list from which random numbers are chosen by deleting numbers which e.g. interfere with block 2, so the chance to get a correct combination rises
             //Check: where to enhance block 5 so it is generated faster
             ok = false;
@@ -274,15 +277,7 @@ namespace tanks_and_tron
                     }
                 }
 
-                txt_500.Text = block5[0, 0].ToString();
-                txt_501.Text = block5[0, 1].ToString();
-                txt_502.Text = block5[0, 2].ToString();
-                txt_510.Text = block5[1, 0].ToString();
-                txt_511.Text = block5[1, 1].ToString();
-                txt_512.Text = block5[1, 2].ToString();
-                txt_520.Text = block5[2, 0].ToString();
-                txt_521.Text = block5[2, 1].ToString();
-                txt_522.Text = block5[2, 2].ToString();
+
 
                 for (int irow = 0; irow < 3; irow++)
                 {
@@ -321,19 +316,31 @@ namespace tanks_and_tron
                 if (countrows >= 3 && countcolumns >= 3)
                 {
                     ok = true;
-                    
+
                 }
             }
-            ok=false;
+            ok = false;
 
-            MessageBox.Show("block 5");
+            txt_500.Text = block5[0, 0].ToString();
+            txt_501.Text = block5[0, 1].ToString();
+            txt_502.Text = block5[0, 2].ToString();
+            txt_510.Text = block5[1, 0].ToString();
+            txt_511.Text = block5[1, 1].ToString();
+            txt_512.Text = block5[1, 2].ToString();
+            txt_520.Text = block5[2, 0].ToString();
+            txt_521.Text = block5[2, 1].ToString();
+            txt_522.Text = block5[2, 2].ToString();
 
-            //block 6
+            //MessageBox.Show("block 5");
+
+            #endregion
+
+            #region block 6
             bool retry = false;
             HashSet<int> set1 = new HashSet<int>();
             HashSet<int> set2 = new HashSet<int>();
             HashSet<int> set3 = new HashSet<int>();
-            
+
 
             do
             {
@@ -402,9 +409,6 @@ namespace tanks_and_tron
                     i6++;
                 }
 
-                txt_600.Text = block6[0, 0].ToString();
-                txt_601.Text = block6[0, 1].ToString();
-                txt_602.Text = block6[0, 2].ToString();
 
                 List<int> numbersforblock6row2 = new List<int>();
                 numbersforblock6row2.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
@@ -469,10 +473,6 @@ namespace tanks_and_tron
                     i6++;
                 }
 
-                txt_610.Text = block6[1, 0].ToString();
-                txt_611.Text = block6[1, 1].ToString();
-                txt_612.Text = block6[1, 2].ToString();
-
                 List<int> numbersforblock6row3 = new List<int>();
                 numbersforblock6row3.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
 
@@ -535,10 +535,6 @@ namespace tanks_and_tron
                     i6++;
                 }
 
-                txt_620.Text = block6[2, 0].ToString();
-                txt_621.Text = block6[2, 1].ToString();
-                txt_622.Text = block6[2, 2].ToString();
-
                 if (ok1 && ok2 && ok3)
                 {
                     retry = false;
@@ -546,123 +542,49 @@ namespace tanks_and_tron
 
             } while (retry);
 
+            txt_600.Text = block6[0, 0].ToString();
+            txt_601.Text = block6[0, 1].ToString();
+            txt_602.Text = block6[0, 2].ToString();
+            txt_610.Text = block6[1, 0].ToString();
+            txt_611.Text = block6[1, 1].ToString();
+            txt_612.Text = block6[1, 2].ToString();
+            txt_620.Text = block6[2, 0].ToString();
+            txt_621.Text = block6[2, 1].ToString();
+            txt_622.Text = block6[2, 2].ToString();
+
             MessageBox.Show("block 6");
 
-            //block 7
-            List<int> numbersforblock7 = new List<int>();
-            numbersforblock7.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
-
-            numbersforblock7.Remove(block1[0, 0]);
-            numbersforblock7.Remove(block1[1, 0]);
-            numbersforblock7.Remove(block1[2, 0]);
-            numbersforblock7.Remove(block4[0, 0]);
-            numbersforblock7.Remove(block4[1, 0]);
-            numbersforblock7.Remove(block4[2, 0]);
-
-            numbersforblock7.OrderBy(c => rnd.Next()).ToArray();
-
-            block7[0, 0] = numbersforblock7.ElementAt<int>(0);
-            block7[1, 0] = numbersforblock7.ElementAt<int>(1);
-            block7[2, 0] = numbersforblock7.ElementAt<int>(2);
-
-            txt_700.Text = block7[0, 0].ToString();
-            txt_710.Text = block7[1, 0].ToString();
-            txt_720.Text = block7[2, 0].ToString();
-
-            List<int> numbersforblock7col2 = new List<int>();
-            numbersforblock7col2.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
-
-            numbersforblock7col2.Remove(block1[0, 1]);
-            numbersforblock7col2.Remove(block1[1, 1]);
-            numbersforblock7col2.Remove(block1[2, 1]);
-            numbersforblock7col2.Remove(block4[0, 1]);
-            numbersforblock7col2.Remove(block4[1, 1]);
-            numbersforblock7col2.Remove(block4[2, 1]);
-
-            numbersforblock7col2.OrderBy(c => rnd.Next()).ToArray();
-
-            block7[0, 1] = numbersforblock7col2.ElementAt<int>(0);
-            block7[1, 1] = numbersforblock7col2.ElementAt<int>(1);
-            block7[2, 1] = numbersforblock7col2.ElementAt<int>(2);
-
-            txt_701.Text = block7[0, 1].ToString();
-            txt_711.Text = block7[1, 1].ToString();
-            txt_721.Text = block7[2, 1].ToString();
-
-            List<int> numbersforblock7row3 = new List<int>();
-            numbersforblock7row3.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
-
-            numbersforblock7row3.Remove(block1[0, 2]);
-            numbersforblock7row3.Remove(block1[1, 2]);
-            numbersforblock7row3.Remove(block1[2, 2]);
-            numbersforblock7row3.Remove(block4[0, 2]);
-            numbersforblock7row3.Remove(block4[1, 2]);
-            numbersforblock7row3.Remove(block4[2, 2]);
-
-            numbersforblock7row3.OrderBy(c => rnd.Next()).ToArray();
-
-            block7[0, 2] = numbersforblock7row3.ElementAt<int>(0);
-            block7[1, 2] = numbersforblock7row3.ElementAt<int>(1);
-            block7[2, 2] = numbersforblock7row3.ElementAt<int>(2);
-
-            txt_702.Text = block7[0, 2].ToString();
-            txt_712.Text = block7[1, 2].ToString();
-            txt_722.Text = block7[2, 2].ToString();
-            MessageBox.Show("block 7");
-
+            #endregion
+            
+            #region block 7, 8, 9
             bool incorrect = true;
+            bool incorrect2 = true;
             do
             {
-                //block 8
-                List<int> numbersforblock8col1 = new List<int>();
-                numbersforblock8col1.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
+                List<int> numbersforblock7col1 = numbersforcol(block1, block4, 0);
 
-                numbersforblock8col1.Remove(block2[0, 0]);
-                numbersforblock8col1.Remove(block2[1, 0]);
-                numbersforblock8col1.Remove(block2[2, 0]);
-                numbersforblock8col1.Remove(block5[0, 0]);
-                numbersforblock8col1.Remove(block5[1, 0]);
-                numbersforblock8col1.Remove(block5[2, 0]);
+                List<int> numbersforblock7col2 = numbersforcol(block1, block4, 1);
 
-                List<int> numbersforblock8col2 = new List<int>();
-                numbersforblock8col2.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
+                List<int> numbersforblock7col3 = numbersforcol(block1, block4, 2);
 
-                numbersforblock8col2.Remove(block2[0, 1]);
-                numbersforblock8col2.Remove(block2[1, 1]);
-                numbersforblock8col2.Remove(block2[2, 1]);
-                numbersforblock8col2.Remove(block5[0, 1]);
-                numbersforblock8col2.Remove(block5[1, 1]);
-                numbersforblock8col2.Remove(block5[2, 1]);
+                List<int> numbersforblock8col1 = numbersforcol(block2, block5, 0);
 
-                List<int> numbersforblock8col3 = new List<int>();
-                numbersforblock8col3.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
+                List<int> numbersforblock8col2 = numbersforcol(block2, block5, 1);
 
-                numbersforblock8col3.Remove(block2[0, 2]);
-                numbersforblock8col3.Remove(block2[1, 2]);
-                numbersforblock8col3.Remove(block2[2, 2]);
-                numbersforblock8col3.Remove(block5[0, 2]);
-                numbersforblock8col3.Remove(block5[1, 2]);
-                numbersforblock8col3.Remove(block5[2, 2]);
+                List<int> numbersforblock8col3 = numbersforcol(block2, block5, 2);
 
+                List<int> numbersforblock9col1 = numbersforcol(block3, block6, 0);
 
-                
+                List<int> numbersforblock9col2 = numbersforcol(block3, block6, 1);
 
-                while (incorrect)
+                List<int> numbersforblock9col3 = numbersforcol(block3, block6, 2);
+
+                while (incorrect2)
                 {
-                    List<int> numbers = numbersforblock8col1.OrderBy(c => rnd.Next()).ToList();
-                    block8[0, 0] = numbers.ElementAt<int>(0);
-                    block8[1, 0] = numbers.ElementAt<int>(1);
-                    block8[2, 0] = numbers.ElementAt<int>(2);
+                    block7 = LastRow(numbersforblock7col1, numbersforblock7col2, numbersforblock7col3);
+                    block8 = LastRow(numbersforblock8col1, numbersforblock8col2, numbersforblock8col3);
+                    block9 = LastRow(numbersforblock9col1, numbersforblock9col2, numbersforblock9col3);
 
-                    numbers = numbersforblock8col2.OrderBy(c => rnd.Next()).ToList();
-                    block8[0, 1] = numbers.ElementAt<int>(0);
-                    block8[1, 1] = numbers.ElementAt<int>(1);
-                    block8[2, 1] = numbers.ElementAt<int>(2);
-
-                    numbers = numbersforblock8col3.OrderBy(c => rnd.Next()).ToList();
-                    block8[0, 2] = numbers.ElementAt<int>(0);
-                    block8[1, 2] = numbers.ElementAt<int>(1);
-                    block8[2, 2] = numbers.ElementAt<int>(2);
 
                     set1.Clear();
                     set2.Clear();
@@ -671,6 +593,9 @@ namespace tanks_and_tron
                     set1.Add(block7[0, 0]);
                     set1.Add(block7[0, 1]);
                     set1.Add(block7[0, 2]);
+                    set1.Add(block9[0, 0]);
+                    set1.Add(block9[0, 1]);
+                    set1.Add(block9[0, 2]);
                     set1.Add(block8[0, 0]);
                     set1.Add(block8[0, 1]);
                     set1.Add(block8[0, 2]);
@@ -678,6 +603,9 @@ namespace tanks_and_tron
                     set2.Add(block7[1, 0]);
                     set2.Add(block7[1, 1]);
                     set2.Add(block7[1, 2]);
+                    set2.Add(block9[1, 0]);
+                    set2.Add(block9[1, 1]);
+                    set2.Add(block9[1, 2]);
                     set2.Add(block8[1, 0]);
                     set2.Add(block8[1, 1]);
                     set2.Add(block8[1, 2]);
@@ -685,164 +613,63 @@ namespace tanks_and_tron
                     set3.Add(block7[2, 0]);
                     set3.Add(block7[2, 1]);
                     set3.Add(block7[2, 2]);
+                    set3.Add(block9[2, 0]);
+                    set3.Add(block9[2, 1]);
+                    set3.Add(block9[2, 2]);
                     set3.Add(block8[2, 0]);
                     set3.Add(block8[2, 1]);
                     set3.Add(block8[2, 2]);
 
-                    txt_800.Text = block8[0, 0].ToString();
-                    txt_810.Text = block8[1, 0].ToString();
-                    txt_820.Text = block8[2, 0].ToString();
-
-                    txt_801.Text = block8[0, 1].ToString();
-                    txt_811.Text = block8[1, 1].ToString();
-                    txt_821.Text = block8[2, 1].ToString();
-
-                    txt_802.Text = block8[0, 2].ToString();
-                    txt_812.Text = block8[1, 2].ToString();
-                    txt_822.Text = block8[2, 2].ToString();
-
-                    //MessageBox.Show(set1.Count.ToString() + ", " + set2.Count.ToString() + ", " + set3.Count.ToString());
-                    if (set1.Count == 6 && set2.Count == 6 && set3.Count == 6)
-                    {
-                        incorrect = false;
-                    }
-                }
-                //MessageBox.Show("block 8");
-
-                //ToDo: OBJEKTORIENTIERUNG
-
-                //ToDo: check for every field what the fitting value is.
-
-
-                //block9 = FillBlock();
-
-
-                List<int> numbersforblock9col1 = new List<int>();
-                numbersforblock9col1.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
-
-                numbersforblock9col1.Remove(block3[0, 0]);
-                numbersforblock9col1.Remove(block3[1, 0]);
-                numbersforblock9col1.Remove(block3[2, 0]);
-                numbersforblock9col1.Remove(block6[0, 0]);
-                numbersforblock9col1.Remove(block6[1, 0]);
-                numbersforblock9col1.Remove(block6[2, 0]);
-
-                List<int> numbersforblock9col2 = new List<int>();
-                numbersforblock9col2.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
-
-                numbersforblock9col2.Remove(block3[0, 1]);
-                numbersforblock9col2.Remove(block3[1, 1]);
-                numbersforblock9col2.Remove(block3[2, 1]);
-                numbersforblock9col2.Remove(block6[0, 1]);
-                numbersforblock9col2.Remove(block6[1, 1]);
-                numbersforblock9col2.Remove(block6[2, 1]);
-
-                List<int> numbersforblock9col3 = new List<int>();
-                numbersforblock9col3.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
-
-                numbersforblock9col3.Remove(block3[0, 2]);
-                numbersforblock9col3.Remove(block3[1, 2]);
-                numbersforblock9col3.Remove(block3[2, 2]);
-                numbersforblock9col3.Remove(block6[0, 2]);
-                numbersforblock9col3.Remove(block6[1, 2]);
-                numbersforblock9col3.Remove(block6[2, 2]);
-
-                incorrect = true;
-                int i2=0;
-                while (i2<20)
-                {
-                    List<int> numbers = numbersforblock9col1.OrderBy(c => rnd.Next()).ToList();
-
-                    if (s1 < 9)
-                    {
-                        set1.Clear();
-                        numbers = numbersforblock9col1.OrderBy(c => rnd.Next()).ToList();
-                        block9[0, 0] = numbers.ElementAt<int>(0);
-                        block9[1, 0] = numbers.ElementAt<int>(1);
-                        block9[2, 0] = numbers.ElementAt<int>(2);
-                        set1.Add(block7[0, 0]);
-                        set1.Add(block7[0, 1]);
-                        set1.Add(block7[0, 2]);
-                        set1.Add(block9[0, 0]);
-                        set1.Add(block9[0, 1]);
-                        set1.Add(block9[0, 2]);
-                        set1.Add(block8[0, 0]);
-                        set1.Add(block8[0, 1]);
-                        set1.Add(block8[0, 2]);
-                        txt_900.Text = block9[0, 0].ToString();
-                        txt_910.Text = block9[1, 0].ToString();
-                        txt_920.Text = block9[2, 0].ToString();
-                    }
-                    if (s2 < 9)
-                    {
-                        set2.Clear();
-                        numbers = numbersforblock9col2.OrderBy(c => rnd.Next()).ToList();
-                        block9[0, 1] = numbers.ElementAt<int>(0);
-                        block9[1, 1] = numbers.ElementAt<int>(1);
-                        block9[2, 1] = numbers.ElementAt<int>(2);
-                        set2.Add(block7[1, 0]);
-                        set2.Add(block7[1, 1]);
-                        set2.Add(block7[1, 2]);
-                        set2.Add(block9[1, 0]);
-                        set2.Add(block9[1, 1]);
-                        set2.Add(block9[1, 2]);
-                        set2.Add(block8[1, 0]);
-                        set2.Add(block8[1, 1]);
-                        set2.Add(block8[1, 2]);
-                        txt_901.Text = block9[0, 1].ToString();
-                        txt_911.Text = block9[1, 1].ToString();
-                        txt_921.Text = block9[2, 1].ToString();
-                    }
-                    if (s3 < 9)
-                    {
-                        set3.Clear();
-                        numbers = numbersforblock9col3.OrderBy(c => rnd.Next()).ToList();
-                        block9[0, 2] = numbers.ElementAt<int>(0);
-                        block9[1, 2] = numbers.ElementAt<int>(1);
-                        block9[2, 2] = numbers.ElementAt<int>(2);
-                        set3.Add(block7[2, 0]);
-                        set3.Add(block7[2, 1]);
-                        set3.Add(block7[2, 2]);
-                        set3.Add(block9[2, 0]);
-                        set3.Add(block9[2, 1]);
-                        set3.Add(block9[2, 2]);
-                        set3.Add(block8[2, 0]);
-                        set3.Add(block8[2, 1]);
-                        set3.Add(block8[2, 2]);
-                        txt_902.Text = block9[0, 2].ToString();
-                        txt_912.Text = block9[1, 2].ToString();
-                        txt_922.Text = block9[2, 2].ToString();
-                    }
-
-                    array9 = "";
-                    foreach (int s in block9)
-                    {
-                        array9 += s;
-                    }
-
-                    //MessageBox.Show(set1.Count.ToString() + ", " + set2.Count.ToString() + ", " + set3.Count.ToString() + "\n" + "Länge des Arrays Block 9: " + block9.Length.ToString() + "\n" + array9);
-
                     if (set1.Count > 8 && set2.Count > 8 && set3.Count > 8)
                     {
-                        incorrect = false;
+                        incorrect2 = false;
                     }
                     else
                     {
-                        s1 = set1.Count;
-                        s2 = set2.Count;
-                        s3 = set3.Count;
+                        MessageBox.Show(set1.Count + ", " + set2.Count + ", " + set3.Count);
                     }
-                    i2++;
                 }
+
             } while (incorrect);
             //ToDo: think of reshuffling several blocks so the sudoku can be completed. Until now, it's possible that the last block cannot be made because existing numbers interfere with it unsolvable.
+            txt_700.Text = block7[0, 0].ToString();
+            txt_710.Text = block7[1, 0].ToString();
+            txt_720.Text = block7[2, 0].ToString();
+            txt_701.Text = block7[0, 1].ToString();
+            txt_711.Text = block7[1, 1].ToString();
+            txt_721.Text = block7[2, 1].ToString();
+            txt_702.Text = block7[0, 2].ToString();
+            txt_712.Text = block7[1, 2].ToString();
+            txt_722.Text = block7[2, 2].ToString();
+
+            txt_800.Text = block8[0, 0].ToString();
+            txt_810.Text = block8[1, 0].ToString();
+            txt_820.Text = block8[2, 0].ToString();
+            txt_801.Text = block8[0, 1].ToString();
+            txt_811.Text = block8[1, 1].ToString();
+            txt_821.Text = block8[2, 1].ToString();
+            txt_802.Text = block8[0, 2].ToString();
+            txt_812.Text = block8[1, 2].ToString();
+            txt_822.Text = block8[2, 2].ToString();
+
+            txt_900.Text = block9[0, 0].ToString();
+            txt_910.Text = block9[1, 0].ToString();
+            txt_920.Text = block9[2, 0].ToString();
+            txt_901.Text = block9[0, 1].ToString();
+            txt_911.Text = block9[1, 1].ToString();
+            txt_921.Text = block9[2, 1].ToString();
+            txt_902.Text = block9[0, 2].ToString();
+            txt_912.Text = block9[1, 2].ToString();
+            txt_922.Text = block9[2, 2].ToString();
+
+            #endregion
+
 
             MessageBox.Show("block 9");
 
             MessageBox.Show("end reached.");
 
             btn_create.IsEnabled = true;
-            #endregion
         }
 
         /// <summary>
@@ -877,6 +704,50 @@ namespace tanks_and_tron
                 // CompareTo() method
                 return y.CompareTo(x);
             }
+        }
+
+        /// <summary>
+        /// a method that deletes vertical given values from vertical1 and vertical2 out of a 1-9 list at the specified column.
+        /// </summary>
+        /// <param name="vertical1">first block that is considered</param>
+        /// <param name="vertical2">second block that is considered</param>
+        /// <param name="col">specify the column you want to make (0, 1, 2)</param>
+        /// <returns>returns a list with 3 values from 1-9</returns>
+        private List<int> numbersforcol(int[,] vertical1, int[,] vertical2, int col)
+        {
+            List<int> numbers = new List<int>() { 1,2,3,4,5,6,7,8,9 };
+            numbers.Remove(vertical1[0, col]);
+            numbers.Remove(vertical1[1, col]);
+            numbers.Remove(vertical1[2, col]);
+            numbers.Remove(vertical2[0, col]);
+            numbers.Remove(vertical2[1, col]);
+            numbers.Remove(vertical2[2, col]);
+
+            return numbers;
+        }
+
+        private int[,] LastRow(List<int> row1, List<int> row2, List<int> row3)
+        {
+            List<int> numbers = new List<int>();
+            Random rnd = new Random();
+            int[,] block = new int[3, 3];
+
+            numbers = row1.OrderBy(c => rnd.Next()).ToList();
+            block[0, 0] = numbers.ElementAt<int>(0);
+            block[1, 0] = numbers.ElementAt<int>(1);
+            block[2, 0] = numbers.ElementAt<int>(2);
+
+            numbers = row2.OrderBy(c => rnd.Next()).ToList();
+            block[0, 1] = numbers.ElementAt<int>(0);
+            block[1, 1] = numbers.ElementAt<int>(1);
+            block[2, 1] = numbers.ElementAt<int>(2);
+
+            numbers = row3.OrderBy(c => rnd.Next()).ToList();
+            block[0, 2] = numbers.ElementAt<int>(0);
+            block[1, 2] = numbers.ElementAt<int>(1);
+            block[2, 2] = numbers.ElementAt<int>(2);
+
+            return block;
         }
     }
 }
