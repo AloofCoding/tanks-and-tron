@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Drawing;
+using Microsoft.Windows.Themes;
 
 namespace tanks_and_tron
 {
@@ -29,9 +30,8 @@ namespace tanks_and_tron
             MainGrid.Focus();
 
             dTimer = new DispatcherTimer();
-            dTimer.Interval = TimeSpan.FromMilliseconds(100);
+            dTimer.Interval = TimeSpan.FromMilliseconds(-100);
             dTimer.Tick += DTimer_Tick;
-
             MouseMove += Window_MouseMove_1;
             KeyDown += MainGrid_KeyDown;
 
@@ -39,8 +39,7 @@ namespace tanks_and_tron
 
         private void DTimer_Tick(object? sender, EventArgs e)
         {
-            TimeSpan.FromMilliseconds(-100);
-            //move bullet
+            
         }
 
         double xt = 0.0;
@@ -325,60 +324,49 @@ namespace tanks_and_tron
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            #region bullet using image - current status: off
-            //Image bullet = new Image();
-            //bullet.BeginInit();
-            //BitmapImage bitmap = new BitmapImage(new Uri("pack://application:,,,/bullet.png"));
-            //bullet.Source = bitmap;
-            //bullet.Margin = tank.Margin;
-            //Panel.SetZIndex(bullet, -1);
-            //bullet.Visibility = Visibility.Visible;
-            //bullet.Height = tank.Height;
-            //bullet.Width = tank.Width;
-            //MainGrid.Children.Add(bullet);
-            ////MessageBox.Show("bullet created");
-            //bullet.EndInit();
-            #endregion
-
-            #region bullet using ellipse - current status: on
-            Ellipse ellipse;
-            ellipse = new Ellipse();
-            ellipse.Height = tank.Height;
-            ellipse.Width = tank.Height;
-            ellipse.Stroke = Brushes.Red;
-            ellipse.Fill = Brushes.Red;
-            ellipse.StrokeThickness = 5;
-            //ellipse.Margin = tank.Margin;
-            Panel.SetZIndex(ellipse, -2);
-            ellipse.SetValue(LeftProperty,tank.GetValue(LeftProperty));
-            MessageBox.Show(tank.GetValue(LeftProperty).ToString());
-            ellipse.SetValue(TopProperty, tank.GetValue(TopProperty));
-            MessageBox.Show(tank.GetValue(TopProperty).ToString());
-            MainGrid.Children.Add(ellipse);
-            //MessageBox.Show(tank.GetValue(LeftProperty).ToString());
-            #endregion
-
-
-            //System.Windows.Point point = e.GetPosition(MainGrid);
-            //var cannon_X = cannon.Margin.Left + cannon.Width / 2;
-            //var cannon_Y = cannon.Margin.Top + cannon.Height / 2;
-            //double side_a;
-            //double side_b;
-
-            //side_b = cannon_X - point.X;
-            //side_a = cannon_Y - point.Y;
-
-            //float angle = (float)Math.Atan2(side_b, side_a) * (float)(180 / Math.PI) * (-1);
-            //cannon.RenderTransform = new RotateTransform(angle);
-
+            #region bullet using image - current status: on
+            var tfg_bullet = new TransformGroup();
+            Image bullet = new Image();
+            bullet.BeginInit();
+            BitmapImage bitmap = new BitmapImage(new Uri("pack://application:,,,/bullet.png"));
+            bullet.Source = bitmap;
+            bullet.VerticalAlignment = VerticalAlignment.Top;
+            bullet.HorizontalAlignment = HorizontalAlignment.Left;
+            bullet.Margin = new Thickness(147, 195, 0, 0);
+            tfg_bullet.Children.Add(new TranslateTransform(xc, yc));
+            tfg_bullet.Children.Add(new RotateTransform(StoreAngle));
+            bullet.RenderTransform = tfg_bullet;
+            //MessageBox.Show(xc.ToString() + " | " + yc.ToString());
+            Panel.SetZIndex(bullet, -1);
+            bullet.Visibility = Visibility.Visible;
+            bullet.Height = tank.Height;
+            bullet.Width = tank.Width;
+            MainGrid.Children.Add(bullet);
+            bullet.EndInit();
             dTimer.Start();
-            //get angle from cannon
-            //move image straight forward along the angle
+            #endregion
+
+            #region bullet using ellipse - current status: off
+            //Ellipse ellipse;
+            //ellipse = new Ellipse();
+            //ellipse.Height = tank.Height;
+            //ellipse.Width = tank.Height;
+            //ellipse.Stroke = Brushes.Red;
+            //ellipse.Fill = Brushes.Red;
+            //ellipse.StrokeThickness = 5;
+            //Panel.SetZIndex(ellipse, -2);
+            //ellipse.RenderTransform = new TranslateTransform(xc, yc);
+            //MessageBox.Show(tank.GetValue(LeftProperty).ToString());
+            //MessageBox.Show(tank.GetValue(TopProperty).ToString());
+            //MainGrid.Children.Add(ellipse);
+            ////MessageBox.Show(tank.GetValue(LeftProperty).ToString());
+            #endregion
+
+
+
             //destroy image when out of sight
             //prevent spawning bullets on click spam
             dTimer.Stop();
-        }
-
-       
+        }      
     }
 }
