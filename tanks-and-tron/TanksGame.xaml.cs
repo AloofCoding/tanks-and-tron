@@ -30,7 +30,7 @@ namespace tanks_and_tron
             MainGrid.Focus();
 
             dTimer = new DispatcherTimer();
-            dTimer.Interval = TimeSpan.FromMilliseconds(-100);
+            dTimer.Interval = TimeSpan.FromMilliseconds(100);
             dTimer.Tick += DTimer_Tick;
             MouseMove += Window_MouseMove_1;
             KeyDown += MainGrid_KeyDown;
@@ -332,11 +332,11 @@ namespace tanks_and_tron
             bullet.Source = bitmap;
             bullet.VerticalAlignment = VerticalAlignment.Top;
             bullet.HorizontalAlignment = HorizontalAlignment.Left;
-            bullet.Margin = new Thickness(147, 195, 0, 0);
+            bullet.Margin = new Thickness(300, 500, 0, 0);
             tfg_bullet.Children.Add(new TranslateTransform(xc, yc));
-            tfg_bullet.Children.Add(new RotateTransform(StoreAngle));
-            bullet.RenderTransform = tfg_bullet;
-            //MessageBox.Show(xc.ToString() + " | " + yc.ToString());
+            //tfg_bullet.Children.Add(new RotateTransform(StoreAngle));
+            bullet.RenderTransform = tfg_bullet;            
+            //MessageBox.Show("X: " + xc.ToString() + " | Y: " + yc.ToString());
             Panel.SetZIndex(bullet, -1);
             bullet.Visibility = Visibility.Visible;
             bullet.Height = tank.Height;
