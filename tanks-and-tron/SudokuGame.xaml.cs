@@ -29,7 +29,8 @@ namespace tanks_and_tron
             btn_create.IsEnabled = false;
             txt_output.Text = "";
             CreateSudoku();
-            //MessageBox.Show("finished creation");
+            //ToDo: Delete selected numbers from the grid
+
             
         }
 
@@ -50,6 +51,7 @@ namespace tanks_and_tron
 
         private void CreateSudoku() 
         {
+            MessageBox.Show("Started");
             bool ok = false;
             int countrows;
             Random rnd = new Random();
@@ -557,7 +559,6 @@ namespace tanks_and_tron
             #endregion
             
             #region block 7, 8, 9
-            bool incorrect = true;
             bool incorrect2 = true;
             do
             {
@@ -579,6 +580,7 @@ namespace tanks_and_tron
 
                 List<int> numbersforblock9col3 = numbersforcol(block3, block6, 2);
 
+                //int count = 0;
                 while (incorrect2)
                 {
                     block7 = LastRow(numbersforblock7col1, numbersforblock7col2, numbersforblock7col3);
@@ -626,12 +628,16 @@ namespace tanks_and_tron
                     }
                     else
                     {
-                        MessageBox.Show(set1.Count + ", " + set2.Count + ", " + set3.Count);
+                        //MessageBox.Show(set1.Count + ", " + set2.Count + ", " + set3.Count);
+                        //count++;
+                        //if (count % 100 == 0)
+                        //{
+                        //    MessageBox.Show(count.ToString());
+                        //}
                     }
                 }
-
-            } while (incorrect);
-            //ToDo: think of reshuffling several blocks so the sudoku can be completed. Until now, it's possible that the last block cannot be made because existing numbers interfere with it unsolvable.
+            } while (incorrect2);
+            
             txt_700.Text = block7[0, 0].ToString();
             txt_710.Text = block7[1, 0].ToString();
             txt_720.Text = block7[2, 0].ToString();
