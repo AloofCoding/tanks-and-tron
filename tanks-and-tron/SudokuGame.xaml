@@ -233,5 +233,12 @@
         </Grid>
         <Button x:Name="btn_save" Content="Save Sudoku" HorizontalAlignment="Left" Margin="34,108,0,0" VerticalAlignment="Top" Height="37" Width="108" Click="btn_create_Click"/>
         <Button x:Name="btn_load" Content="Load Sudoku" HorizontalAlignment="Left" Margin="34,194,0,0" VerticalAlignment="Top" Height="37" Width="108" Click="btn_create_Click"/>
+        <ComboBox x:Name="cmb_difficulty" HorizontalAlignment="Left" Margin="34,311,0,0" VerticalAlignment="Top" Width="108" SelectedIndex="0">
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="666"/>
+        </ComboBox>
+        <Label Content="Difficulty:" HorizontalAlignment="Left" Margin="34,280,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
