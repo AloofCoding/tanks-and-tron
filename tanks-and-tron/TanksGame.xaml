@@ -27,18 +27,18 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Rectangle HorizontalAlignment="Left" Height="176" Margin="0,0,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="244" StrokeThickness="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="299" Margin="0,772,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="196" StrokeThickness="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="393" Margin="1754,676,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="168" StrokeThickness="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="255" Margin="1754,-2,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="171" StrokeThickness="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="398" Margin="0,171,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="150" StrokeThickness="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="173" Margin="187,898,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="507" StrokeThickness="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="158" Margin="1806,528,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="116" StrokeThickness="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="90" Margin="1038,0,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="722" StrokeThickness="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="249" Margin="0,532,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="168" StrokeThickness="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="115" Margin="686,952,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="1078" StrokeThickness="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="295" Margin="1786,244,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="139" StrokeThickness="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="128" Margin="236,-2,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="808" StrokeThickness="10"/>
+        <Rectangle HorizontalAlignment="Left" Height="176" Margin="0,0,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="244" StrokeThickness="10" Tag="wall"/>
+        <Rectangle HorizontalAlignment="Left" Height="299" Margin="0,772,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="196" StrokeThickness="10" Tag="wall"/>
+        <Rectangle HorizontalAlignment="Left" Height="393" Margin="1754,676,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="168" StrokeThickness="10" Tag="wall"/>
+        <Rectangle HorizontalAlignment="Left" Height="255" Margin="1754,-2,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="171" StrokeThickness="10" Tag="wall"/>
+        <Rectangle HorizontalAlignment="Left" Height="398" Margin="0,171,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="150" StrokeThickness="10" Tag="wall"/>
+        <Rectangle HorizontalAlignment="Left" Height="173" Margin="187,898,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="507" StrokeThickness="10" Tag="wall"/>
+        <Rectangle HorizontalAlignment="Left" Height="158" Margin="1806,528,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="116" StrokeThickness="10" Tag="wall"/>
+        <Rectangle HorizontalAlignment="Left" Height="90" Margin="1038,0,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="722" StrokeThickness="10" Tag="wall"/>
+        <Rectangle HorizontalAlignment="Left" Height="249" Margin="0,532,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="168" StrokeThickness="10" Tag="wall"/>
+        <Rectangle HorizontalAlignment="Left" Height="115" Margin="686,952,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="1078" StrokeThickness="10" Tag="wall"/>
+        <Rectangle HorizontalAlignment="Left" Height="295" Margin="1786,244,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="139" StrokeThickness="10" Tag="wall"/>
+        <Rectangle HorizontalAlignment="Left" Height="128" Margin="236,-2,0,0" Stroke="Black" Fill="gray" VerticalAlignment="Top" Width="808" StrokeThickness="10" Tag="wall"/>
         <Rectangle HorizontalAlignment="Center" Height="294" Stroke="Black" Fill="gray" VerticalAlignment="Center" Width="100" StrokeThickness="10"/>
     </Grid>
 </Window>

@@ -79,6 +79,14 @@ namespace tanks_and_tron
             #region not margin version
             if (e.Key == Key.W && Keyboard.IsKeyDown(Key.D) || e.Key == Key.D && Keyboard.IsKeyDown(Key.W))
             {
+                Rect Hitbox = new Rect(Canvas.GetLeft(tank), Canvas.GetTop(tank), tank.Width, tank.Height);
+                foreach (Rect rect in MainGrid.Children)
+                {
+                    if (Hitbox.IntersectsWith(rect))
+                    {
+                        
+                    }
+                }
                 TranslateX = 1.25;
                 TranslateY = -1.25;
                 tfg_tank.Children.Add(new RotateTransform(41.25));
@@ -177,6 +185,7 @@ namespace tanks_and_tron
             {
 
             }
+
             tank.UpdateLayout();
             cannon.UpdateLayout();
             #endregion
