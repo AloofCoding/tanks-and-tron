@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tanks_and_tron"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
+        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize" MinWidth="800" MinHeight="450">
     <Grid>
-        <Image x:Name="img_sudoku" HorizontalAlignment="Left" Height="195" Margin="0,229,0,0" VerticalAlignment="Top" Width="207" Source="/Sudoku.png" Stretch="Uniform"/>
+        <Image x:Name="img_sudoku" HorizontalAlignment="Left" Height="200" Margin="0,229,0,0" VerticalAlignment="Top" Width="200" Source="/Sudoku.png" Stretch="Fill"/>
 
         <Image x:Name="img_tanks" HorizontalAlignment="Left" Height="230" VerticalAlignment="Top" Width="479" Source="/tanks.jpg"/>
         <Image x:Name="img_tron" HorizontalAlignment="Right" Height="227" Margin="370,207,0,0" VerticalAlignment="Bottom" Width="434" Source="/tron.jpg"/>
