@@ -512,7 +512,7 @@ namespace tanks_and_tron
 
             } while (retry);
 
-            MessageBox.Show("block 6");
+            //MessageBox.Show("block 6");
 
             #endregion
             
@@ -521,24 +521,17 @@ namespace tanks_and_tron
             do
             {
                 List<int> numbersforblock7col1 = numbersforcol(block1, block4, 0);
-
                 List<int> numbersforblock7col2 = numbersforcol(block1, block4, 1);
-
                 List<int> numbersforblock7col3 = numbersforcol(block1, block4, 2);
 
                 List<int> numbersforblock8col1 = numbersforcol(block2, block5, 0);
-
                 List<int> numbersforblock8col2 = numbersforcol(block2, block5, 1);
-
                 List<int> numbersforblock8col3 = numbersforcol(block2, block5, 2);
 
                 List<int> numbersforblock9col1 = numbersforcol(block3, block6, 0);
-
                 List<int> numbersforblock9col2 = numbersforcol(block3, block6, 1);
-
                 List<int> numbersforblock9col3 = numbersforcol(block3, block6, 2);
 
-                //int count = 0;
                 while (incorrect2)
                 {
                     block7 = LastRow(numbersforblock7col1, numbersforblock7col2, numbersforblock7col3);
@@ -602,7 +595,7 @@ namespace tanks_and_tron
 
             MessageBox.Show("block 9");
 
-            MessageBox.Show("end reached.");
+            //MessageBox.Show("end reached.");
 
             btn_create.IsEnabled = true;
         }
@@ -714,7 +707,7 @@ namespace tanks_and_tron
                     break;
             }
 
-            while (fieldsleft > 0)
+            while (fieldsleft <= 81)
             {
                 //error because the array doesn't get shorter > infinte loop
                 int i = rnd.Next(0, 9);
@@ -722,7 +715,7 @@ namespace tanks_and_tron
                 if (displayed[i, j] != 0)
                 {
                     displayed[i, j] = 0;
-                    fieldsleft--;
+                    fieldsleft++;
                 }
             }
 
@@ -843,11 +836,18 @@ namespace tanks_and_tron
             txt_912.Text = ablock9[1, 2].ToString();
             txt_922.Text = ablock9[2, 2].ToString();
 
-            //todo: ölkjfdsa
-            foreach (TextBox t in grid_sudoku)
+            //ToDo: get rid of 0s in the sudoku grid
+            foreach (Object x in this.grid_sudoku.Children)
             {
-
+                if (x is TextBox)
+                {
+                    if (((TextBox)x).Text.Equals(0))
+                    {
+                        ((TextBox)x).Text = ""; 
+                    }
+                }
             }
+
             MessageBox.Show("truly end reached");
         }
 
