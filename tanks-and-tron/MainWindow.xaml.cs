@@ -39,5 +39,20 @@ namespace tanks_and_tron
             this.Close();
 
         }
+        private void btn_tron_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            TronGame tronGame = new TronGame();
+            tronGame.Show();
+            this.Close();
+            */
+        }
+
+        private void btn_tanks_Click_1(object sender, RoutedEventArgs e)
+        {
+            TanksGame tanksGame = new TanksGame();
+            tanksGame.Show();
+            this.Close();
+        }
     }
 }
