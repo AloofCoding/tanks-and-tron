@@ -57,22 +57,14 @@ namespace tanks_and_tron
         int[,] complete = new int[9, 9];
         int[,] displayed = new int[9, 9];
 
-        int s1;
-        int s2;
-        int s3;
-
 
         private void CreateSudoku() 
         {
-            MessageBox.Show("Started");
+            //MessageBox.Show("Started");
             bool ok = false;
             int countrows;
             Random rnd = new Random();
             int[] arr = Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray();
-            s1 = 0;
-            s2 = 0;
-            s3 = 0;
-
 
             #region block 1, 2
             while (!ok)
@@ -131,6 +123,7 @@ namespace tanks_and_tron
             #endregion
 
             #region block 3
+            //block 3 is generated from the leftover numbers from blocks 1 and 2
             List<int> numbersforblock3 = new List<int>();
             numbersforblock3.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
 
@@ -162,9 +155,7 @@ namespace tanks_and_tron
 
             block3[1, 0] = numbersforblock3row2.ElementAt<int>(0);
             block3[1, 1] = numbersforblock3row2.ElementAt<int>(1);
-            block3[1, 2] = numbersforblock3row2.ElementAt<int>(2);
-
-            
+            block3[1, 2] = numbersforblock3row2.ElementAt<int>(2);            
 
             List<int> numbersforblock3row3 = new List<int>();
             numbersforblock3row3.AddRange(Enumerable.Range(1, 9).OrderBy(c => rnd.Next()).ToArray());
@@ -188,6 +179,7 @@ namespace tanks_and_tron
             #endregion
 
             #region block 4
+            //block 4 is generated randomly, then checked with block 1
             while (!ok)
             {
                 int i = 0;
@@ -238,6 +230,8 @@ namespace tanks_and_tron
             #region block 5
             //ToDo: edit list from which random numbers are chosen by deleting numbers which e.g. interfere with block 2, so the chance to get a correct combination rises
             //Check: where to enhance block 5 so it is generated faster
+
+            //block 5 is generated purely randomly, then checked with blocks 2 and 4
             ok = false;
             while (!ok)
             {
@@ -255,8 +249,6 @@ namespace tanks_and_tron
                         i++;
                     }
                 }
-
-
 
                 for (int irow = 0; irow < 3; irow++)
                 {
@@ -306,6 +298,7 @@ namespace tanks_and_tron
             #endregion
 
             #region block 6
+            //block 6 is generated randomly from the leftover numbers from blocks 4 and 5, then checked row by row with block 3
             bool retry = false;
             HashSet<int> set1 = new HashSet<int>();
             HashSet<int> set2 = new HashSet<int>();
@@ -517,6 +510,7 @@ namespace tanks_and_tron
             #endregion
             
             #region block 7, 8, 9
+            //blocks 7,8,9 are generated at the same time so that if a sudoku is not able to be completed, it is easier to reshuffle the whole last row
             bool incorrect2 = true;
             do
             {
@@ -593,7 +587,7 @@ namespace tanks_and_tron
             #endregion
 
 
-            MessageBox.Show("block 9");
+            //MessageBox.Show("block 9");
 
             //MessageBox.Show("end reached.");
 
@@ -836,19 +830,42 @@ namespace tanks_and_tron
             txt_912.Text = ablock9[1, 2].ToString();
             txt_922.Text = ablock9[2, 2].ToString();
 
-            //ToDo: get rid of 0s in the sudoku grid
-            foreach (Object x in this.grid_sudoku.Children)
+            List<Visual> list_textbox = new List<Visual>();
+            EnumVisual(win_sudoku, list_textbox);
+
+            foreach(TextBox t in list_textbox.OfType<TextBox>())
             {
-                if (x is TextBox)
+                if (t.Text.ToString().Equals("0"))
                 {
-                    if (((TextBox)x).Text.Equals(0))
-                    {
-                        ((TextBox)x).Text = ""; 
-                    }
+                    t.Text = "";
+                }
+                else
+                {
+                    t.IsEnabled = false;
                 }
             }
 
-            MessageBox.Show("truly end reached");
+            //MessageBox.Show("truly end reached");
+        }
+
+        /// <summary>
+        /// Enumerate all the descendants (children) of a visual object.
+        /// </summary>
+        /// <param name="parent">Starting visual (parent).</param>
+        /// <param name="collection">Collection, into which is placed all of the descendant visuals.</param>
+        public static void EnumVisual(Visual parent, List<Visual> collection)
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                // Get the child visual at specified index value.
+                Visual childVisual = (Visual)VisualTreeHelper.GetChild(parent, i);
+
+                // Add the child visual object to the collection.
+                collection.Add(childVisual);
+
+                // Recursively enumerate children of the child visual object.
+                EnumVisual(childVisual, collection);
+            }
         }
 
         private void FillComplete()
