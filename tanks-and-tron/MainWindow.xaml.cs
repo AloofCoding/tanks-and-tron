@@ -27,6 +27,16 @@ namespace tanks_and_tron
 
         private void btn_sudoku_Click(object sender, RoutedEventArgs e)
         {
+            SudokuGame sudoku = new SudokuGame();
+            sudoku.ShowDialog();
+            
+        }
+
+        private void btn_tron_Click(object sender, RoutedEventArgs e)
+        {
+            TronGame tronGame = new TronGame();
+            tronGame.Show();
+            this.Close();
 
         }
         private void btn_tron_Click(object sender, RoutedEventArgs e)
